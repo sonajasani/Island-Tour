@@ -196,7 +196,7 @@ class Booking(db.Model):
 
     # Relationship
     resorts = db.relationship("Resort", back_populates="bookings")
-    users = db.relationship("User", back_populates="bookings")
+    userss = db.relationship("User", back_populates="bookings")
 
 
     def to_dict(self):
