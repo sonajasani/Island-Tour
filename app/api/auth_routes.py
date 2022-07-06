@@ -3,9 +3,13 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from datetime import datetime
 
 auth_routes = Blueprint('auth', __name__)
 
+#################################################################################################
+                        # Validation Error #
+#################################################################################################
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -18,6 +22,10 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
+#################################################################################################
+                      
+#################################################################################################
+
 @auth_routes.route('/')
 def authenticate():
     """
@@ -26,6 +34,10 @@ def authenticate():
     if current_user.is_authenticated:
         return current_user.to_dict()
     return {'errors': ['Unauthorized']}
+
+#################################################################################################
+                        # Login Route #
+#################################################################################################
 
 
 @auth_routes.route('/login', methods=['POST'])
@@ -45,6 +57,10 @@ def login():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+#################################################################################################
+                        # Logout Route #
+#################################################################################################
+
 @auth_routes.route('/logout')
 def logout():
     """
@@ -53,6 +69,10 @@ def logout():
     logout_user()
     return {'message': 'User logged out'}
 
+
+#################################################################################################
+                        # SignUp Route #
+#################################################################################################
 
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
@@ -73,6 +93,10 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+#################################################################################################
+                        # Unauthorized Route #
+#################################################################################################
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
