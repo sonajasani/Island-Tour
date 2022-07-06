@@ -3,6 +3,8 @@ from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
+###########################################################################################
+
 
 def user_exists(form, field):
     # Checking if user exists
@@ -21,6 +23,8 @@ def password_matches(form, field):
         raise ValidationError('No such user exists.')
     if not user.check_password(password):
         raise ValidationError('Password was incorrect.')
+
+###########################################################################################
 
 
 class LoginForm(FlaskForm):

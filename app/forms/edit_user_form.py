@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 from flask_wtf.file import FileAllowed
 
+###########################################################################################
 
 
 def user_exists(form, field):
@@ -20,6 +21,9 @@ def username_exists(form, field):
     user = User.query.filter(User.username == username).first()
     if user:
         raise ValidationError('Username is already in use.')
+
+
+###########################################################################################
 
 
 class EditUserForm(FlaskForm):
