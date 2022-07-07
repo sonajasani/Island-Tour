@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
-import DemoLogin from './demo'
+import DemoLogin from '../demo'
 
 
 /*****************************************************************************************/
 
-const LoginForm = () => {
+const LoginForm = ({ setShowLoginModal }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +21,9 @@ const LoginForm = () => {
 
   useEffect(() => {
 		const errors = [];
-		if (email.length == 0) errors.push("Must provide a value for the email.");
+		if (email.length === 0) errors.push("Must provide a value for the email.");
 		if (!emailRegex.test(email)) errors.push("Must provide a valid email.");
-		if (password.length == 0)
+		if (password.length === 0)
 			errors.push("Must provide a value for the password.");
 		setErrors(errors);
 	}, [email, password]);
@@ -61,7 +61,6 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
@@ -71,7 +70,6 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'

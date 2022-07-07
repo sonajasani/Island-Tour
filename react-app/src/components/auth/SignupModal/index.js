@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
 
 import { Modal } from '../../../context/Modal';
-import SignUpForm from "./SignUpForm";
+import SignupForm from "./SignupForm";
 
 /******************************************************************************/
 
-function SignUpModal() {
+function SignupModal() {
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   return (
@@ -16,7 +15,7 @@ function SignUpModal() {
       </div>
       {showSignUpModal && (
         <Modal onClose={() => setShowSignUpModal(false)}>
-          <SignUpForm setShowSignUpModal={setShowSignUpModal} />
+          <SignupForm setShowSignUpModal={setShowSignUpModal} />
         </Modal>
       )}
     </>
@@ -25,4 +24,5 @@ function SignUpModal() {
 
 /******************************************************************************/
 
-export default SignUpModal;
+export default SignupModal;
+
