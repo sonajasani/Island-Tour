@@ -36,8 +36,6 @@ def new_booking(resort_id):
             resort_id=resort_id,
             check_in=data['check_in'],
             check_out=data['check_out'],
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
         )
 
         db.session.add(new_booking)
@@ -60,8 +58,8 @@ def update_booking(booking_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        booking.start_date = data['start_date'],
-        booking.end_date = data['end_date']
+        booking.check_in = data['check_in'],
+        booking.check_out = data['check_out']
 
         db.session.commit()
         return booking.to_dict()

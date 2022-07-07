@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import DemoLogin from '../demo'
+import './LoginForm.css'
 
 
 /*****************************************************************************************/
@@ -54,7 +55,7 @@ const LoginForm = ({ setShowLoginModal }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className="login-form-class">
       <div>
         {hasSubmitted && errors.map((error, ind) => (
           <div key={ind}>{error}</div>

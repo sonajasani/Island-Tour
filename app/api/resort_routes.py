@@ -62,9 +62,7 @@ def new_resort():
             fire_place=data['fire_place'],
             wifi=data['wifi'],
             workspace=data['workspace'],
-            water_sports=data['water_sports'],
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            water_sports=data['water_sports']
         )
 
         db.session.add(new_resort)
@@ -101,9 +99,7 @@ def update_resort(id):
         resort.fire_place=data['fire_place'],
         resort.wifi=data['wifi'],
         resort.workspace=data['workspace'],
-        resort.water_sports=data['water_sports'],
-        resort.created_at=datetime.utcnow(),
-        resort.updated_at=datetime.utcnow()
+        resort.water_sports=data['water_sports']
 
         db.session.commit()
         return resort.to_dict()
