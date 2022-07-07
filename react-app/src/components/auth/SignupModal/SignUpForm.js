@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp } from '../../../store/session';
+import DemoLogin from './demo'
+
+/************************************************************************************/
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -10,17 +13,35 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+	const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
   const dispatch = useDispatch();
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
-    }
-  };
+
+  useEffect(() => {
+		const errors = [];
+		if (username.length === 0) errors.push("Must provide a value for the username.");
+		if (email.length === 0) errors.push("Must provide a value for the email.");
+		if (!emailRegex.test((email))) errors.push("Must provide a valid email.");
+		if (password.length === 0)
+			errors.push("Must provide a value for the password.");
+		if (repeatPassword.length === 0) errors.push("Must repeat the password.");
+		if (repeatPassword !== password) errors.push("Passwords do not match.");
+		setErrors(errors);
+	}, [email, password, repeatPassword]);
+
+
+	const onSignUp = async (e) => {
+		e.preventDefault();
+		setHasSubmitted(true);
+		if (errors.length <= 0) {
+			const data = await dispatch(signUp(username, email, password));
+			console.log(data);
+			if (data) {
+				setErrors(data);
+			}
+		}
+	};
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -45,7 +66,7 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp}>
       <div>
-        {errors.map((error, ind) => (
+        { hasSubmitted && errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
@@ -87,8 +108,12 @@ const SignUpForm = () => {
         ></input>
       </div>
       <button type='submit'>Sign Up</button>
+      <DemoLogin />
     </form>
   );
 };
+
+
+/******************************************************************************/
 
 export default SignUpForm;

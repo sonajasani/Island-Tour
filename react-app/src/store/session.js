@@ -1,6 +1,9 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER';
+
+/************************************************************************************/
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +14,12 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+const editUser = (user) => ({
+  type: EDIT_USER,
+  payload: user
+})
+
+/************************************************************************************/
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -29,6 +37,8 @@ export const authenticate = () => async (dispatch) => {
   }
 }
 
+
+
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
@@ -40,7 +50,6 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
   
   if (response.ok) {
     const data = await response.json();
@@ -54,8 +63,9 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
-
 }
+
+
 
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
@@ -63,11 +73,12 @@ export const logout = () => async (dispatch) => {
       'Content-Type': 'application/json',
     }
   });
-
+  
   if (response.ok) {
     dispatch(removeUser());
   }
 };
+
 
 
 export const signUp = (username, email, password) => async (dispatch) => {
@@ -97,13 +108,87 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case SET_USER:
-      return { user: action.payload }
-    case REMOVE_USER:
-      return { user: null }
-    default:
-      return state;
+
+
+export const editSingleUser = (userId, data) => async dispatch => {
+  const res = await fetch(`/api/users/edit/${userId}`, {
+    method: 'PUT',
+    body: data
+  });
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(editUser(user));
+    return user;
   }
 }
+
+
+
+export const removeSingleUser = (userId) => async dispatch => {
+  const res = await fetch(`/api/users/delete/${userId}`, {
+    method: 'DELETE',
+  })
+
+  if (res.ok) {
+    const confirmation = await res.json();
+    const removedId = confirmation.id
+    dispatch(removeUser(removedId))
+    return removedId;
+  }
+}
+
+
+
+// export const demo = (email, password) => async (dispatch) => {
+//   email = "demo@aa.io";
+//   password = "password";
+//   const response = await fetch('/api/auth/login', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       email,
+//       password
+//     })
+//   });
+//   const data = await response.json();
+//   dispatch(setUser(data))
+//   return response;
+// }
+
+/************************************************************************************/
+
+
+const initialState = { user: null };
+
+
+export default function reducer(state = initialState, action) {
+  let newState = { ...state }
+  let user;
+  switch (action.type) {
+
+    case SET_USER:
+      return { user: action.payload }
+
+    case REMOVE_USER:
+        return { user: null }
+
+    case (EDIT_USER):
+      newState = {};
+      user = action.payload
+      newState[user.id] = user;
+      return newState
+    
+    case (REMOVE_USER):
+      newState = {
+        ...state,
+      };
+      delete newState[action.payload.userId]
+      return newState
+
+    default:
+      return state;
+    }
+  }
+      
