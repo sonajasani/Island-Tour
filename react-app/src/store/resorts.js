@@ -4,7 +4,7 @@ const CREATE_RESORT = "/resorts/create";
 const EDIT_RESORT = "/resorts/edit";
 const DELETE_RESORT = "/resorts/delete";
 
-const loadResorts = (spots) => ({
+const loadResorts = (resorts) => ({
 	type: GET_ALL_RESORTS,
 	resorts,
 });
@@ -34,7 +34,7 @@ export const getResorts = () => async (dispatch) => {
 
 	if (response.ok) {
 		const resortList = await response.json();
-		dispatch(loadSpots(resortList));
+		dispatch(loadResorts(resortList));
 		return resortList;
 	}
 };
@@ -115,7 +115,7 @@ export const eraseResort = (id) => async (dispatch) => {
 
 //AWS upload images
 export const uploadImage = (imageData) => async dispatch => {
-	const { url, spot_id, image } = imageData;
+	const { url, resort_id, image } = imageData;
 
 	const formData = new FormData();
 	formData.append("url", url);
