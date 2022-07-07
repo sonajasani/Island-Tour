@@ -35,9 +35,7 @@ def new_review(resort_id):
             user_id=current_user.to_dict()['id'],
             resort_id=resort_id,
             rating=data['rating'],
-            comment=data['comment'],
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            comment=data['comment']
         )
         db.session.add(new_review)
         db.session.commit()
@@ -60,9 +58,7 @@ def update_review(review_id):
    
     if form.validate_on_submit():
         review.rating = data['rating'],
-        review.comment = data['comment'],
-        review.created_at=datetime.utcnow(),
-        review.updated_at=datetime.utcnow()
+        review.comment = data['comment']
 
         db.session.commit()
         return review.to_dict()

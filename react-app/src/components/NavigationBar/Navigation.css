@@ -33,3 +33,9 @@
 	cursor: pointer;
 	font-family: "Open Sans", sans-serif;
 }
+
+
+
+.nav-bar{
+	border: 3px solid black
+}

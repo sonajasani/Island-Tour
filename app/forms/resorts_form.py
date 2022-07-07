@@ -48,6 +48,5 @@ class ResortForm(FlaskForm):
     wifi = BooleanField('wifi')
     workspace = BooleanField('workspace')
     water_sports = BooleanField('water_sports')
-    created_at = DateField('updated_at')
-    updated_at = DateField('updated_at')
+
 

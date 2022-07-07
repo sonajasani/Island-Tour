@@ -16,8 +16,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.String(180), nullable=True)
     profile_pic_url = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.TIMESTAMP(timezone=False))
-    updated_at = db.Column(db.TIMESTAMP(timezone=False))
+
 
 
     # Relationships
@@ -44,8 +43,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'bio': self.bio,
             'profile_pic_url': self.profile_pic_url,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
         }
 
 
@@ -72,8 +69,7 @@ class Resort(db.Model):
     wifi = db.Column(db.Boolean, nullable=False)
     workspace = db.Column(db.Boolean, nullable=False)
     water_sports = db.Column(db.Boolean, nullable=False)
-    created_at = db.Column(db.TIMESTAMP(timezone=False))
-    updated_at = db.Column(db.TIMESTAMP(timezone=False))
+
 
     # Relationships
     users = db.relationship("User", back_populates='resorts')
@@ -102,8 +98,7 @@ class Resort(db.Model):
             'wifi': self.wifi,
             'workspace': self.workspace,
             'water_sports': self.water_sports,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+
         }
 
 ####################################################################################################
@@ -114,8 +109,7 @@ class ResortImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     resort_id = db.Column(db.Integer, db.ForeignKey("resorts.id", ondelete="CASCADE"), nullable=False)
     url = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.TIMESTAMP(timezone=False))
-    updated_at = db.Column(db.TIMESTAMP(timezone=False))
+
 
     # Relationship
     resorts = db.relationship("Resort", back_populates="resort_images")
@@ -125,8 +119,7 @@ class ResortImage(db.Model):
             "id": self.id,
             "resort_id": self.resort_id,
             "url": self.url,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at
+
         }
 
 
@@ -140,8 +133,6 @@ class Review(db.Model):
     resort_id = db.Column(db.Integer, db.ForeignKey("resorts.id"), nullable=False)
     rating = db.Column(db.Float, nullable=False)
     comment = db.Column(db.String(1000), nullable=False)
-    created_at = db.Column(db.TIMESTAMP(timezone=False))
-    updated_at = db.Column(db.TIMESTAMP(timezone=False))
 
     # Relationship
     resorts = db.relationship("Resort", back_populates="reviews")
@@ -156,8 +147,6 @@ class Review(db.Model):
             "review": self.review,
             "username": self.users.username,
             "photo": self.users.profile_pic_url,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at
         }
 
 
@@ -191,8 +180,7 @@ class Booking(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     check_in = db.Column(db.Date, nullable=False)
     check_out = db.Column(db.Date, nullable=False)
-    created_at = db.Column(db.TIMESTAMP(timezone=False))
-    updated_at = db.Column(db.TIMESTAMP(timezone=False))
+
     
     # Relationship
     resorts = db.relationship("Resort", back_populates="bookings")
@@ -206,6 +194,5 @@ class Booking(db.Model):
             "user": self.users.to_dict(),
             "check_in": self.check_in,
             "check_out": self.check_out,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at
+
         }
