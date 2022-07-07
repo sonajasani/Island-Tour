@@ -1,0 +1,45 @@
+from app.models import db, Review
+
+
+# # Adds a demo user, you can add other users here if you want
+def seed_reviews():
+    review1 = Review(
+        user_id=1, resort_id=1, rating=4, comment='Really enjoyed my stay!')
+    review2 = Review(
+        user_id=2, resort_id=1, rating=5, comment='5 stars all around!')
+    review3 = Review(
+        user_id=3, resort_id=1, rating=3, comment='This was not fit for royalty')
+    review4 = Review(
+        user_id=1, resort_id=2, rating=5, comment='5 stars all around!')
+    review5 = Review(
+        user_id=2, resort_id=2, rating=4, comment='Really enjoyed my stay!')
+    review6 = Review(
+        user_id=3, resort_id=2, rating=5, comment='WOW!!!')
+    review7 = Review(
+        user_id=2, resort_id=3, rating=3, comment='House is in decent condition. However, it did not have a butler')
+    review8 = Review(
+        user_id=3, resort_id=3, rating=3, comment='Neither good nor bad. I will not be returning')
+    review9 = Review(
+        user_id=1, resort_id=3, rating=1, comment='To return to this dungeon would be a nightmare. Would give zero stars if I could')
+
+    db.session.add(review1)
+    db.session.add(review2)
+    db.session.add(review3)
+    db.session.add(review4)
+    db.session.add(review5)
+    db.session.add(review6)
+    db.session.add(review7)
+    db.session.add(review8)
+    db.session.add(review9)
+
+    db.session.commit()
+
+
+# # Uses a raw SQL query to TRUNCATE the users table.
+# # SQLAlchemy doesn't have a built in function to do this
+# # TRUNCATE Removes all the data from the table, and RESET IDENTITY
+# # resets the auto incrementing primary key, CASCADE deletes any
+# # dependent entities
+def undo_reviews():
+    db.session.execute('TRUNCATE resorts RESTART IDENTITY CASCADE;')
+    db.session.commit()

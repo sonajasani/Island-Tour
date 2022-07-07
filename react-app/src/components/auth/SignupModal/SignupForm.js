@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
-import DemoLogin from './demo'
+import DemoLogin from '../demo'
 
 /************************************************************************************/
 
-const SignUpForm = () => {
+const SignupForm = ({ setShowSignUpModal }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -116,4 +116,5 @@ const SignUpForm = () => {
 
 /******************************************************************************/
 
-export default SignUpForm;
+export default SignupForm;
+

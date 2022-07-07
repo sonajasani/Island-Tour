@@ -193,10 +193,10 @@ class Booking(db.Model):
     check_out = db.Column(db.Date, nullable=False)
     created_at = db.Column(db.TIMESTAMP(timezone=False))
     updated_at = db.Column(db.TIMESTAMP(timezone=False))
-
+    
     # Relationship
     resorts = db.relationship("Resort", back_populates="bookings")
-    userss = db.relationship("User", back_populates="bookings")
+    users = db.relationship("User", back_populates="bookings")
 
 
     def to_dict(self):

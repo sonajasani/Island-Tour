@@ -171,9 +171,6 @@ export default function reducer(state = initialState, action) {
     case SET_USER:
       return { user: action.payload }
 
-    case REMOVE_USER:
-        return { user: null }
-
     case (EDIT_USER):
       newState = {};
       user = action.payload
