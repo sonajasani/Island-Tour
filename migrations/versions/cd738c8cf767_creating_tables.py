@@ -1,8 +1,8 @@
 """creating tables
 
-Revision ID: 5aebaf6bc5b2
+Revision ID: cd738c8cf767
 Revises: 
-Create Date: 2022-07-06 16:44:55.270070
+Create Date: 2022-07-07 18:26:49.144607
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5aebaf6bc5b2'
+revision = 'cd738c8cf767'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,8 +25,6 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('bio', sa.String(length=180), nullable=True),
     sa.Column('profile_pic_url', sa.String(), nullable=True),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=True),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -50,8 +48,6 @@ def upgrade():
     sa.Column('wifi', sa.Boolean(), nullable=False),
     sa.Column('workspace', sa.Boolean(), nullable=False),
     sa.Column('water_sports', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=True),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -68,8 +64,6 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('check_in', sa.Date(), nullable=False),
     sa.Column('check_out', sa.Date(), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=True),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=True),
     sa.ForeignKeyConstraint(['resort_id'], ['resorts.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -78,8 +72,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('resort_id', sa.Integer(), nullable=False),
     sa.Column('url', sa.String(), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=True),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=True),
     sa.ForeignKeyConstraint(['resort_id'], ['resorts.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -89,8 +81,6 @@ def upgrade():
     sa.Column('resort_id', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('comment', sa.String(length=1000), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=True),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=True),
     sa.ForeignKeyConstraint(['resort_id'], ['resorts.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
