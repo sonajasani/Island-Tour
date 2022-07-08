@@ -1,53 +1,52 @@
-// frontend/src/components/Navigation/index.js
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-import ProfileButton from "./ProfileButton";
-import LoginModal from "../auth/LoginModal";
-import SignupModal from "../auth/SignupModal";
-import "./Navigation.css";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
+import logo from '../../images/logo.png';
 
 
-/******************************************************************************************/
+import LoginModal from '../auth/LoginModal';
+import SignUpModal from '../auth/SignupModal';
+import ProfileButton from './ProfileButton';
+import { FaCrown } from 'react-icons/fa'
+import './Navigation.css'
 
 
-const NavigationBar = () => {
+const NavigationBar = ({spots, setFiltered }) => {
+  let location = useLocation();
+  const user = useSelector(state => state.session.user)
 
-    const user = useSelector(state => state.session.user)
-  
-    let sessionLinks;
-    if (user) {
-      sessionLinks = (
-        <>
-          <div className='nav-bar-right'>
-            <ProfileButton />
-          </div>
-        </>
-      )
-    }
-    else {
-      sessionLinks = (
+  let sessionLinks;
+  if (user) {
+    sessionLinks = (
+      <>
         <div className='nav-bar-right'>
-          <LoginModal />
-          <SignupModal />
-        </div>
-      )
-    }
-  
-    return (
-      <div className='nav-bar'>
-        <div className='nav-bar-left'>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            <p>Island Tour</p>
+          <ProfileButton />
+          <NavLink to='/resorts'>
+            <button>View All Resorts</button>
           </NavLink>
         </div>
-        {sessionLinks}
+      </>
+    )
+  }
+  else {
+    sessionLinks = (
+      <div className='nav-bar-right'>
+        <LoginModal />
+        <SignUpModal />
       </div>
-    );
+    )
   }
 
-/*********************************************************************************************/
-
+  return (
+    <div className='nav-bar'>
+      <div className='nav-bar-left'>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          <img src={logo} alt="logo" />
+        </NavLink>
+      </div>
+      {sessionLinks}
+    </div>
+  );
+}
 
 export default NavigationBar;

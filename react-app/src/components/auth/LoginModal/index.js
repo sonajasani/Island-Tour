@@ -9,16 +9,7 @@ function LoginModal() {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  // if (showLoginModal){
-  //   console.log(showLoginModal, ".............................")
-  //   return (
-  //     <Modal onClose={() => setShowLoginModal(false)}>
-  //       <LoginForm setShowLoginModal={setShowLoginModal} />
-  //     </Modal>
-  //   )
-  // }
 
-  console.log(showLoginModal, "-----------------")
   return (
     <>
       <div onClick={() => setShowLoginModal(true)} className='login'>

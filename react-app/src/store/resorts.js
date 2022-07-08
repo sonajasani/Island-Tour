@@ -1,4 +1,4 @@
-const GET_ALL_RESORTS = "/resortss/getAllResorts";
+const GET_ALL_RESORTS = "/resorts/getAllResorts";
 const GET_RESORT = "/resorts/getResort";
 const CREATE_RESORT = "/resorts/create";
 const EDIT_RESORT = "/resorts/edit";
@@ -113,6 +113,8 @@ export const eraseResort = (id) => async (dispatch) => {
 	}
 };
 
+
+
 //AWS upload images
 export const uploadImage = (imageData) => async dispatch => {
 	const { url, resort_id, image } = imageData;
@@ -133,6 +135,7 @@ export const uploadImage = (imageData) => async dispatch => {
 
 }
 
+/***************************************************************/
 
 const resortsReducer = (state = {}, action) => {
 	switch (action.type) {
