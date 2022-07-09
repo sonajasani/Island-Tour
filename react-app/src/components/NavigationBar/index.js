@@ -7,7 +7,6 @@ import logo from '../../images/logo.png';
 import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import ProfileButton from './ProfileButton';
-import { FaCrown } from 'react-icons/fa'
 import './Navigation.css'
 
 

@@ -8,15 +8,16 @@ import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { VscPreview } from 'react-icons/vsc';
 import profilePicture from '../../images/ProfilePic.png'
+import LogoutButton from "./LogoutButton";
 
 import './Navigation.css'
 import { logout } from '../../store/session';
 
 function ProfileButton() {
-  const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
-
+  const dispatch = useDispatch();
+  
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -35,16 +36,13 @@ function ProfileButton() {
   }, [showMenu]);
 
 
-  const onLogout = async (e) => {
-    await dispatch(logout());
-  };
 
 
   return (
     <>
       <div onClick={openMenu} className='profile-btn'>
         <GiHamburgerMenu />
-        <img src={user.photo ? user.photo : profilePicture} alt="avatar"></img>
+        <img src={user.profile_pic_url ? user.profile_pic_url : profilePicture} alt="avatar"></img>
       </div>
       {showMenu && (
         <div className='profile-btn-nav' >
@@ -54,9 +52,15 @@ function ProfileButton() {
               <p className="dropdown-txt">Profile</p>
             </div>
           </NavLink>
-          <div className="profile-nav-selection" onClick={onLogout}>
+          <NavLink className="listings" to="/profile/@my-resorts">
+            <div className="profile-nav-selection">
+              <FaHome />
+              <p className="dropdown-txt">My Resorts</p>
+            </div>
+          </NavLink>
+          <div className="profile-nav-selection" >
             <AiOutlineLogout />
-            <p className="dropdown-txt">Logout</p>
+            <LogoutButton />
           </div>
         </div>
       )}

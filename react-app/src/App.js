@@ -10,15 +10,19 @@ import { authenticate } from './store/session';
 import AllResorts from './components/AllResortsPage/AllResorts';
 import SingleResort from './components/AllResortsPage/SingleResort';
 import CreateResort from './components/AllResortsPage/CreateResort';
+import EditResort from './components/AllResortsPage/EditResort';
 
 function App() {
-  const [loaded, setLoaded] = useState(false);;
+  const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
- 
+  const resorts = Object.values(useSelector(state => state.resort));
+  const [filtered, setFiltered] = useState(resorts);
+
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(getResorts());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -34,10 +38,13 @@ function App() {
           <AllResorts />
         </ProtectedRoute>
         <ProtectedRoute path='/resorts/:resortId' exact={true} >
-          <SingleResort />
+          <SingleResort setLoaded={setLoaded} loaded={loaded}/>
         </ProtectedRoute>
         <ProtectedRoute path="/resorts/create/new" exact={true}>
           <CreateResort />
+        </ProtectedRoute>
+        <ProtectedRoute path="/resorts/:resortId/edit" exact={true}>
+          <EditResort />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -46,7 +53,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <NavigationBar loaded={loaded} />
+          <NavigationBar resorts={resorts} setFiltered={setFiltered} />
         </Route>
       </Switch>
     </BrowserRouter>

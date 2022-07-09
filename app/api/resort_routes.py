@@ -16,7 +16,7 @@ resort_routes = Blueprint('resorts', __name__)
 @login_required
 def all_resorts():
     resorts = Resort.query.all()
-    return {'resorts': resort.to_dict() for resort in resorts}
+    return { resort.id: resort.to_dict() for resort in resorts}
 
 
 ###############################################################################################
@@ -42,21 +42,25 @@ def single_resort(id):
 def new_resort():
     form = ResortForm()
     data = form.data
+    user_id = current_user.id
+    form["user_id"].data = user_id
     form['csrf_token'].data = request.cookies['csrf_token']
 
+
     if form.validate_on_submit():
+     
         new_resort = Resort(
             name=data['name'],
             island=data['island'],
             country=data['country'],
             continent=data['continent'],
             description=data['description'],
-            user_id=current_user.to_dict()['id'],
+            user_id=user_id,
             price=data['price'],
             minibar=data['minibar'],
             gym=data['gym'],
             spa=data['spa'],
-            jacuzzi=data['bathrooms'],
+            jacuzzi=data['jacuzzi'],
             pool=data['pool'],
             room_service=data['room_service'],
             fire_place=data['fire_place'],
@@ -64,8 +68,9 @@ def new_resort():
             workspace=data['workspace'],
             water_sports=data['water_sports']
         )
-
+        
         db.session.add(new_resort)
+
         db.session.commit()
         return new_resort.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -81,8 +86,10 @@ def update_resort(id):
     resort = Resort.query.get(id)
     form = ResortForm()
     data = form.data
+    user_id = current_user.id
+    form["user_id"].data = user_id
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print("................edit form......................")
     if form.validate_on_submit():
         resort.name=data['name'],
         resort.island=data['island'],

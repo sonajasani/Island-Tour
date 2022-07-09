@@ -59,16 +59,16 @@ class Resort(db.Model):
     description = db.Column(db.String(500), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    minibar = db.Column(db.Boolean, nullable=False)
-    gym = db.Column(db.Boolean, nullable=False)
-    spa = db.Column(db.Boolean, nullable=False)
-    jacuzzi = db.Column(db.Boolean, nullable=False)
-    pool = db.Column(db.Boolean, nullable=False)
-    room_service = db.Column(db.Boolean, nullable=False)
-    fire_place = db.Column(db.Boolean, nullable=False)
-    wifi = db.Column(db.Boolean, nullable=False)
-    workspace = db.Column(db.Boolean, nullable=False)
-    water_sports = db.Column(db.Boolean, nullable=False)
+    minibar = db.Column(db.Boolean)
+    gym = db.Column(db.Boolean)
+    spa = db.Column(db.Boolean)
+    jacuzzi = db.Column(db.Boolean)
+    pool = db.Column(db.Boolean)
+    room_service = db.Column(db.Boolean)
+    fire_place = db.Column(db.Boolean)
+    wifi = db.Column(db.Boolean)
+    workspace = db.Column(db.Boolean)
+    water_sports = db.Column(db.Boolean)
 
 
     # Relationships
@@ -98,7 +98,9 @@ class Resort(db.Model):
             'wifi': self.wifi,
             'workspace': self.workspace,
             'water_sports': self.water_sports,
-
+            "bookings": [ booking.id for booking in self.bookings],
+            "reviews": [ {"id": review.id, "user_id":review.user_id} for review in self.reviews],
+            "resort_images": [ resort_image.to_dict() for resort_image in self.resort_images],
         }
 
 ####################################################################################################

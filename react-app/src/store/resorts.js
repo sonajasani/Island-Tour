@@ -52,6 +52,7 @@ export const getResort = (id) => async (dispatch) => {
 
 
 export const addResort = (data) => async (dispatch) => {
+	
 	const response = await fetch("/api/resorts/new", {
 		method: "POST",
 		headers: {
@@ -59,6 +60,7 @@ export const addResort = (data) => async (dispatch) => {
 		},
 		body: JSON.stringify(data),
 	});
+
 
 	if (response.ok) {
 		const data = await response.json();
@@ -118,11 +120,15 @@ export const eraseResort = (id) => async (dispatch) => {
 //AWS upload images
 export const uploadImage = (imageData) => async dispatch => {
 	const { url, resort_id, image } = imageData;
+	
 
 	const formData = new FormData();
 	formData.append("url", url);
 	formData.append("resort_id", resort_id);
 	formData.append("image", image);
+
+	console.log(formData, "*****form data**********")
+
 
 	const res = await fetch('/api/images/upload', {
 		method: "POST",

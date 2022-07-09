@@ -1,49 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { addResort, getResorts } from "../../store/resorts";
-import { uploadImage } from "../../store/resorts";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { modifyResort, getResort } from "../../store/resorts";
+// import { uploadImage } from "../../store/resorts";
 import UploadImage from "../Other/UploadImage"
 
 /*******************************************************************************/
 
-const CreateResort = () => {
+const EditResort = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
+    const { resortId } = useParams();
+
+    const resort = useSelector((state) => state.resort[resortId]);
 
 	const continents = ["Asia", "Africa", "Antartica", "Europe", "North America", "Oceania", "South America"];
 
-    const [name, setName] = useState("");
-    const [island, setIsland] = useState("");
-    const [country, setCountry] = useState("");
-    const [continent, setContinent] = useState("Asia");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState(0);
-    const [minibar, setMinibar] = useState(false);
-    const [gym, setGym] = useState(false);
-    const [spa, setSpa] = useState(false);
-    const [jacuzzi, setJacuzzi] = useState(false);
-    const [pool, setPool] = useState(false);
-    const [room_service, setRoomService] = useState(false);
-    const [fire_place, setFirePlace] = useState(false);
-    const [wifi, setWifi] = useState(false);
-    const [workspace, setWorkspace] = useState(false);
-    const [water_sports, setWaterSports] = useState(false);
-	const [images, setImages] = useState([]);
+    const [name, setName] = useState(resort?.name);
+    const [island, setIsland] = useState(resort?.island);
+    const [country, setCountry] = useState(resort?.country);
+    const [continent, setContinent] = useState(resort?.continent);
+    const [description, setDescription] = useState(resort?.description);
+    const [price, setPrice] = useState(resort?.price);
+    const [minibar, setMinibar] = useState(resort?.minibar);
+    const [gym, setGym] = useState(resort?.gym);
+    const [spa, setSpa] = useState(resort?.spa);
+    const [jacuzzi, setJacuzzi] = useState(resort?.jacuzzi);
+    const [pool, setPool] = useState(resort?.pool);
+    const [room_service, setRoomService] = useState(resort?.room_service);
+    const [fire_place, setFirePlace] = useState(resort?.fire_place);
+    const [wifi, setWifi] = useState(resort?.wifi);
+    const [workspace, setWorkspace] = useState(resort?.workspace);
+    const [water_sports, setWaterSports] = useState(resort?.water_sports);
+	// const [images, setImages] = useState([]);
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [hasSubmitted, setHasSubmitted] = useState(false);
 
-	const addImages = (images, resort_id) => {
-		images.forEach(async (image) => {
+	// const addImages = (images, resort_id) => {
+	// 	images.forEach(async (image) => {
  
-			const imageData = {
-				image: image,
-				url: image.name,
-				resort_id: resort_id,
-			};
-			await dispatch(uploadImage(imageData));
-		});
-	};
+	// 		const imageData = {
+	// 			image: image,
+	// 			url: image.name,
+	// 			resort_id: resort_id,
+	// 		};
+	// 		await dispatch(uploadImage(imageData));
+	// 	});
+	// };
+    const images = resort?.resort_images;
 
 	useEffect(() => {
 		const errors = [];
@@ -53,7 +57,7 @@ const CreateResort = () => {
 		if (description.length < 10)
 			errors.push("Description must be more than 10 characters.");
 		if (price <= 10) errors.push("Price must be greater than 10.");
-		if (images.length < 4) errors.push('Please submit more than three photos')
+		// if (images.length < 4) errors.push('Please submit more than three photos')
      
 		setValidationErrors(errors);
 	}, [
@@ -64,10 +68,15 @@ const CreateResort = () => {
 		price
 	]);
 
+
+    const onCancel = () => {
+		history.push(`/resorts/${resortId}`)
+	}
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		setHasSubmitted(true);
-		const imageFiles = images.map((image) => image.file);
+		// const imageFiles = images.map((image) => image.file);
 		const data = {
             name,
             island,
@@ -87,27 +96,34 @@ const CreateResort = () => {
             water_sports 
 		};
         
+        console.log(validationErrors,".................................ve.....")
         
 		if (validationErrors.length <= 0) {
-			const resort = await dispatch(addResort(data));
-			const resort_id = resort.id;
-            
-			await addImages(imageFiles, resort_id);
-			history.push(`/resorts/${resort_id}`);
+			await dispatch(modifyResort(data)).then(
+                () => console.log(data),
+                history.push(`/resorts/${resortId}`)
+            );
 			setValidationErrors([]);
 			setHasSubmitted(false);
-			await dispatch(getResorts());
 		}
 	};
 
 	return (
 		<div>
 			<div>
-				<h2>Do you own a Resort? Want to Share ?</h2>
-				<img
-					className="imageFormLeft"
-					src="https://media.istockphoto.com/photos/water-villas-in-hotel-resort-maldives-picture-id519691168?k=20&m=519691168&s=612x612&w=0&h=zCwQOV7xfc0Ewj_ilJxzxueA7uvw6tXF8p87IyoyN0o="
-				/>
+				<h2>Edit your Resort !</h2>
+			</div>
+            <div className="imagesSpot">
+					{images?.map((image, i) => {
+						return (
+							<img
+								className="singleImageSpot"
+								src={image.url}
+								alt="image"
+								key={i}
+							/>
+						);
+					})}
 			</div>
 			<div className="resort-form-div">
 				<form onSubmit={onSubmit}>
@@ -298,14 +314,13 @@ const CreateResort = () => {
                         </input>
                         <label htmlFor="water_sports">Water Activities</label>
                     </div>
-					<button type="submit">Add Resort</button>
-                    <div>
-                        <UploadImage images={images} setImages={setImages} />
-                    </div>
+					<button type="submit">Edit Resort</button>
+                    <button onClick={onCancel} className="cancelSpotBtn">Cancel</button>
 				</form>
 			</div>
 		</div>
 	);
 };
 
-export default CreateResort;
+export default EditResort;
+

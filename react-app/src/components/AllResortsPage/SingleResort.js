@@ -49,7 +49,7 @@ function SingleResort() {
                     <h3>
                     {resort.description}
                     </h3>
-                    <h3>Price: {resort.price}/night</h3>
+                    <h3>Price: ${resort.price}/night</h3>
                 </div>
                 <div className="resort-amenities">
                     <h2>Amenities</h2>
