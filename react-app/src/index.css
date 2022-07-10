@@ -1,9 +1,7 @@
 /* TODO Add site wide styles */
 @import url('./css/Modal.css');
-
 @import url('./css/ProfilePage.css');
 @import url('./css/ResortsForm.css');
-@import url('./css/ResortDetailListing.css');
 @import url('./css/ConfirmationBooking.css');
 @import url('./css/PageNotFound.css');
 

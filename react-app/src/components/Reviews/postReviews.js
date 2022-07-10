@@ -44,7 +44,7 @@ const ReviewForm = () => {
   return (
     <div className='RatingFormContainerNew'>
       <div className='RatingFormContainerNewInner'>
-        Submit a Reivew
+        Post Your Reivew
       </div>
       <form onSubmit={handleSubmit} className='RatingFormNew'>
         <div className='RatingFormInner'>
@@ -66,7 +66,8 @@ const ReviewForm = () => {
             />
           </label>
         </div>
-        <button type="submit" className='RatingFormNewSubmit'>Submit</button>
+        <button type="submit" className='RatingFormNewSubmit'>
+        <i class="fa fa-send-o"></i>Submit</button>
       </form>
     </div>
   );

@@ -28,9 +28,9 @@ const GetReviews = () => {
 
   return (
     <div>
-      <h2>{revCount} Reviews</h2>
+      <h3>Total: {revCount} Reviews</h3>
       {revCount > 0 ?
-      <h3>{totalRating} Stars</h3>
+      <h3>{totalRating} <i class="fa fa-star" aria-hidden="true"></i></h3>
       : null
       }
       {reviews.map((review) => {

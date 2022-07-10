@@ -48,23 +48,11 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	}
 	return (
 		<div className="singleResortBody">
-			<div className="divisionRight">
-						<Calendar />
-					</div>
+			
 			<div key={resort?.id}>
 				<div className="resortHeader">
 					<div className="resortHeaderInfo">
 						<h1>{resort?.name}</h1>
-					</div>
-					<div className="resortHeaderButtons">
-						{resort?.host.id == user?.id && (
-							<div>
-								<DeleteResort resortId={resortId} />
-								<button onClick={onClickEdit} className="editResortBtn">
-									Edit Resort
-								</button>
-							</div>
-						)}
 					</div>
 				</div>
 				<div className="imagesResort">
@@ -77,6 +65,9 @@ const SingleResort = ({ setLoaded, loaded }) => {
 						</h2>
 						<p className="resortDescription">{resort?.description}</p>
 						<h3>Price: ${resort?.price}/night</h3>
+						<div className="divisionRight">
+							<Calendar />
+						</div>
 					</div>
 					<div className="resort-amenities">
 						<h2>Amenities</h2>

@@ -50,13 +50,13 @@ const EditReview = ({reviewProp, setEditOpen}) => {
         <div className='RatingFormInner'>
           <label className='NewRatingLabel'>
             <div className='NewRatingDiv'>
-              Edit Rating
+            Rating
             </div>
             <Rating onClick={handleRating} ratingValue={adjRating} emptyColor={'rgb(255, 255, 255)'} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
           </label>
           <label className='NewRatingLabel'>
             <div className='NewRatingDiv'>
-             Edit Review
+             Review
             </div>
             <textarea
               type="text"

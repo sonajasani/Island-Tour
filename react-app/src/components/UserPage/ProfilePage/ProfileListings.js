@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getResorts } from "../../../store/resorts";
 import { useDispatch } from "react-redux";
+import DeleteResort from "../../Resorts/SingleResort/DeleteResort";
+import './ProfileListing.css'
 
 function ProfileListings() {
 	const user = useSelector((state) => state.session.user);
@@ -16,22 +18,36 @@ function ProfileListings() {
     dispatch(getResorts())
   })
 
+
 	return (
 		<div className="profile-listings-page profile-section">
 			{userResorts.length ? (
 				userResorts.map((resort) => {
 					return (
-						<Link
-							key={resort?.id}
-							className="resort-detail-link"
-							to={`/resorts/${resort?.id}`}
-						>
-							<div className="resortDetailBody">
-								<h2>{resort?.name}</h2>
-								<h3>${resort?.price}/night</h3>
-								<img className="listingResortImage" src={resort?.images[0]?.url} />
+						<div className='resort-list-main'>
+							<Link
+								key={resort?.id}
+								className="resort-detail-link"
+								to={`/resorts/${resort?.id}`}
+							>
+								<div className="resortDetailBody">
+									<h2>{resort?.name}</h2>
+									<h3>${resort?.price}/night</h3>
+									<img className="listingResortImage" src={resort?.images[0]?.url} />
+								</div>
+							</Link>
+							<div className="resortHeaderButtons">
+								<div>
+									<DeleteResort resortId={resort.id} />
+									<NavLink to={`/resorts/${resort.id}/edit`}>
+										<button className="editResortBtn">
+											Edit Resort
+										</button>
+									</NavLink>
+								</div>
+								<div className="section-underline-div"></div>
 							</div>
-						</Link>
+						</div>
 					);
 				})
 			) : (

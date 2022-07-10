@@ -1,20 +1,22 @@
 .divisionRight{
     margin-top: 2%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    margin-top: 70px;
 }
 
 
 .calendarWrapClosed {
     display: flex;
-    justify-content:flex-end;
+    /* justify-content:; */
     align-items: center;
     border-radius: 10px;
     flex-direction: column;
     color:white;
-    background-color: aqua;
+    font-weight: 600;
+    background-color: rgb(21, 190, 190);
     width: 100px;
-    box-shadow: rgba(24, 231, 110, 0.35) 0px 5px 15px;
+    box-shadow: 5px 5px 10px rgb(57, 58, 165);
 }
 
 .calendarWrapClosed:hover {
@@ -26,7 +28,7 @@
     color:white;
     background-color: red;
     width: 100px;
-    box-shadow: rgba(24, 231, 110, 0.35) 0px 5px 15px;
+    box-shadow: 5px 5px 10px rgb(102, 4, 81);
 }
 
 .calendarWrapOpen {

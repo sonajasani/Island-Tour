@@ -1,3 +1,7 @@
+.main-review-div{
+	width:40%
+}
+
 .total-star-rating .review {
 	opacity: 0.5;
 	text-decoration: underline;
@@ -45,10 +49,12 @@
     background-color: rgb(148, 204, 170);
     border-radius: 20px;
     box-shadow: 3px 3px 7px green;
+	width: 300px;
 }
 
 .RatingFormInner {
 	display: flex;
+	flex-direction: column;
 }
 
 .ReviewFormActionButtonsContainer {
@@ -62,14 +68,13 @@
 	cursor: pointer;
 }
 
-
-
 .NewRatingLabel {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: 10px;
+	margin-bottom: 10px;
+	font-weight: 600;
 }
 
 .NewRatingDiv {
@@ -81,12 +86,15 @@
 }
 
 .RatingFormContainerNew {
-	background-color: #b9b9b9;
+	background-color: rgb(148, 204, 170);
+	box-shadow: 3px 3px 7px green;
 	padding: 25px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 40px;
+	border-radius: 20px;
 }
 
 .RatingFormNew {
@@ -95,15 +103,32 @@
 }
 
 .RatingFormNewSubmit {
-	border-radius: 10px;
-	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    color:black;
+    font-size: 15px;
+    font-weight: 600;
+	height: 30px
+}
+
+.RatingFormNewSubmit:hover{
+	color:green;
+    font-size: 17px;
 }
 
 .RatingFormContainerNewInner {
 	font-size: larger;
-	margin: 40px;
+	font-weight: 600;
 }
 
+
+/*******************************************************************/
 
 .fa-edit{
     position:relative;
@@ -131,6 +156,7 @@
 .ReviewFormInnerButtons {
 	margin-right: 10px;
     margin-bottom: 10px;
+	margin-top: 2px;
     background-color: white;
     border: none;
     border-radius: 20px;
