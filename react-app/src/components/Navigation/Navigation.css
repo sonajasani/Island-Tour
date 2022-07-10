@@ -35,10 +35,18 @@
 	color: var(--main-theme-color);
 }
 
+.nav-bar-left {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin-left: 9%;
+}
+
 .nav-bar-right {
 	display: flex;
 	align-items: center;
 	text-align: center;
+	margin-right: 9%;
 }
 
 .login {
@@ -195,12 +203,13 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-evenly;
-	right: 5px;
 	top: 100px;
+	right:-10px;
 	width: 150px;
 	height: 150px;
 	border-radius: 10px;
 	padding-left: 20px;
+	margin-right: 9%
 }
 
 .profile-nav-selection {
