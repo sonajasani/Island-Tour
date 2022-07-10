@@ -9,13 +9,7 @@ function UserViewPage() {
 
   return (
     <>
-      {sessionUser ? 
-          <NavLink to='/resorts'>
-            <button>View All Resorts</button>
-          </NavLink>
-        :
-          <SplashPage />
-      } 
+      <SplashPage />
     </>
   )
 }

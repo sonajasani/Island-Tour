@@ -40,7 +40,6 @@ function ProfileButton() {
   return (
     <>
       <div onClick={openMenu} className='profile-btn'>
-        <GiHamburgerMenu />
         <img src={user.photo ? user.photo : profilePicture} alt="avatar"></img>
       </div>
       {showMenu && (

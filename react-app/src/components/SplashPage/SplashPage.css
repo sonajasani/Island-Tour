@@ -27,16 +27,32 @@
     font-style: italic;
     font-family:serif;
     color: white;
+	border-bottom: 1px solid white;
 }
 
 
-.splash-sub-title {
+.splash-sub-text {
 	color: white;
 	line-height: 30px;
-    font-size: 30px;
+    font-size: 20px;
+	font-weight: 100;
+	padding-bottom: 30px;
 }
-
 
 .splash-demo {
 	width: 200px;
+}
+
+.splash-all-resort>button{
+	color: black;
+	border:none;
+	width:100%;
+	font-size: 20px;
+	height: 40px;
+	border-radius: 10px;
+	background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+}
+
+.splash-all-resort>button:hover{
+	box-shadow: 4px 4px 8px red;
 }

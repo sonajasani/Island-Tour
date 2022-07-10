@@ -144,6 +144,7 @@
 }
 
 .nav-logo>img{
+	padding-top: 5px;
 	height: 70px;
 	width: 70px;
 	border-radius: 50%;
@@ -172,6 +173,7 @@
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 5px;
+	cursor: pointer;
 }
 
 .profile-btn .react-icons {
@@ -179,9 +181,9 @@
 	padding: 0px 0.5rem;
 }
 
-.profile-btn img {
-	width: 1.75rem;
-	height: 1.75rem;
+.profile-btn>img {
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -195,8 +197,8 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-evenly;
-	right: 40px;
-	top: 80px;
+	right: 5px;
+	top: 100px;
 	width: 150px;
 	height: 150px;
 	border-radius: 10px;

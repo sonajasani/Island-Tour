@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  useHistory, NavLink } from "react-router-dom";
+import './Resort.css'
 
 import {getResorts} from '../../store/resorts'
 
@@ -37,9 +38,9 @@ function AllResorts() {
 
     return (
         <>
-            <div>
+            <div className='all-resort-div'>
                 <div>
-                    <NavLink to='resorts/new' >
+                    <NavLink to='resorts/new' className='upload-resort-btn'>
                         <button>
                             Upload New Resort
                         </button>
@@ -47,94 +48,94 @@ function AllResorts() {
                 </div>
                 <h1>Famous Island Resorts In The World !</h1>
                 <div className="resorts-div">
-                    <div>
-                        <h2>Asia</h2>
-                        {asiaResort?.map((r, i) => (
-                            <ul>
-                                <NavLink to={`/resorts/${r.id}`}>
+                    <div className='resort-sub-div'>
+                        <div className="continent-resort">
+                            <h2>Asia</h2>
+                            {asiaResort?.map((r, i) => (
+                                <ul>
+                                    <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                        <li  key={i}>
+                                        <p>{r.name}</p>
+                                        </li>
+                                    </NavLink>
+                                </ul>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>Europe</h2>
+                            {europeResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
                                     <li  key={i}>
-                                      <p>{r.name}</p>
-                                   
+                                    <p>{r.name}</p>
                                     </li>
                                 </NavLink>
                             </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>Europe</h2>
-                        {europeResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
-                                 
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>North America</h2>
-                        {naResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
-                                  
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>South America</h2>
-                        {saResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>Oceania</h2>
-                        {oceaniaResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>Africa</h2>
-                        {africaResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
-                               
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>Antarctica</h2>
-                        {antarticaResort?.map((r, i) => (
-                            <ul>
-                            <NavLink to={`/resorts/${r.id}`}>
-                                <li  key={i}>
-                                  <p>{r.name}</p>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>North America</h2>
+                            {naResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                    <li  key={i}>
+                                    <p>{r.name}</p>
+                                    
+                                    </li>
+                                </NavLink>
+                            </ul>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>South America</h2>
+                            {saResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                    <li  key={i}>
+                                    <p>{r.name}</p>
+                                    </li>
+                                </NavLink>
+                            </ul>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>Oceania</h2>
+                            {oceaniaResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                    <li  key={i}>
+                                    <p>{r.name}</p>
+                                    </li>
+                                </NavLink>
+                            </ul>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>Africa</h2>
+                            {africaResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                    <li  key={i}>
+                                    <p>{r.name}</p>
                                 
-                                </li>
-                            </NavLink>
-                        </ul>
-                        ))}
+                                    </li>
+                                </NavLink>
+                            </ul>
+                            ))}
+                        </div>
+                        <div className="continent-resort">
+                            <h2>Antarctica</h2>
+                            {antarticaResort?.map((r, i) => (
+                                <ul>
+                                <NavLink to={`/resorts/${r.id}`} className='resort-name-div'>
+                                    <li  key={i}>
+                                    <p>{r.name}</p>
+                                    
+                                    </li>
+                                </NavLink>
+                            </ul>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
