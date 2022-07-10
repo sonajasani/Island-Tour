@@ -166,13 +166,11 @@
 	background-color: white;
 	width: auto;
 	height: fit-content;
-	padding: 2px;
-	border-radius: 1rem;
+	border-radius: 50%;
 	border: 1px solid #bfbfbf;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	padding: 5px;
 	cursor: pointer;
 }
 
@@ -182,7 +180,7 @@
 }
 
 .profile-btn>img {
-	width: 60px;
+	width: 80px;
 	height: 60px;
 	border-radius: 50%;
 	object-fit: cover;

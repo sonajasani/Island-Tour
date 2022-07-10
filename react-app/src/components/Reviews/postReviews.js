@@ -5,6 +5,7 @@ import { postReview } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
 import { getResorts } from '../../store/resorts';
 import { getReviews } from '../../store/reviews';
+import './Reviews.css'
 
 const ReviewForm = () => {
 

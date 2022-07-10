@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import EditReview from "./editReviews";
 import profilePicture from '../../images/ProfilePic.png'
+import './Reviews.css'
 
 const GetReviews = () => {
   const reviews = Object.values(useSelector(state => state.review))
@@ -48,7 +49,12 @@ const GetReviews = () => {
                 <div>
                   {user.id === review.userId ?
                   <div>
-                    {!editOpen && <button onClick={() => setEditOpen(!editOpen)} className='EditReviewFormButton'>Edit Review</button>}
+                    {!editOpen && 
+                    <div>
+                    <button onClick={() => setEditOpen(!editOpen)} className='EditReviewFormButton'>
+                    <i class="fa fa-edit"></i>
+                    </button>
+                    </div>}
                     {editOpen && <EditReview setEditOpen={setEditOpen} reviewProp={review}/>}
                   </div> : null}
                 </div>

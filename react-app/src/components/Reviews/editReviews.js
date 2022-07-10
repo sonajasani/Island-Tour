@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import { editReview } from '../../store/reviews';
 import DeleteReview from './deleteReviews';
-
+import './Reviews.css'
 
 const EditReview = ({reviewProp, setEditOpen}) => {
   const history = useHistory();
@@ -44,16 +44,19 @@ const EditReview = ({reviewProp, setEditOpen}) => {
   return (
     <div className='RatingFormContainer'>
       <form onSubmit={handleSubmit} className='RatingForm'>
+        <div onClick={() => {setEditOpen(false)}} className='ReviewFormActionButtons CloseBtn'>
+          <i class="fa fa-remove"></i>
+        </div>
         <div className='RatingFormInner'>
           <label className='NewRatingLabel'>
             <div className='NewRatingDiv'>
-              New Rating
+              Edit Rating
             </div>
             <Rating onClick={handleRating} ratingValue={adjRating} emptyColor={'rgb(255, 255, 255)'} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
           </label>
           <label className='NewRatingLabel'>
             <div className='NewRatingDiv'>
-              Comments
+             Edit Review
             </div>
             <textarea
               type="text"
@@ -64,13 +67,13 @@ const EditReview = ({reviewProp, setEditOpen}) => {
           </label>
         </div>
         <div className='RatingFormInnerButtonsContainer'>
-          <button type="submit" className='ReviewFormInnerButtons'>Submit</button>
+          <button type="submit" className='ReviewFormInnerButtons'>
+          <i class="fa fa-send-o"></i>Submit</button>
           <DeleteReview reviewProp={reviewProp} setEditOpen={setEditOpen} className='ReviewFormInnerButtons' />
         </div>
+      {/* <div className='ReviewFormActionButtonsContainer'>
+      </div> */}
       </form>
-      <div className='ReviewFormActionButtonsContainer'>
-        <div onClick={() => {setEditOpen(false)}} className='ReviewFormActionButtons CloseBtn'>Close</div>
-      </div>
     </div>
   );
 };

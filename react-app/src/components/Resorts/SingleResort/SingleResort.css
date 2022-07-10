@@ -76,11 +76,15 @@
 
 
 
-.total-star-rating .review {
-	opacity: 0.5;
-	text-decoration: underline;
-	text-align: center;
+
+.divisionLeft{
+	color: green;
 }
+
+.resortHeaderInfo>h1{
+	color:green
+}
+
 
 .slide {
 	opacity: 0;
@@ -92,128 +96,6 @@
 	transition-duration: 1s;
 	transform: scale(1.08);
 }
-
-.ReviewCardContainer {
-	margin: 25px;
-	background-color: white;
-	padding: 25px;
-	width: fit-content;
-	border-radius: 15px;
-	/* border: 1px grey solid; */
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-}
-
-.ReviewHeaderContainer {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-#getReviewsPhoto {
-	width: 65px;
-	height: 65px;
-	border-radius: 50%;
-	object-fit: cover;
-}
-
-.ReviewHeaderRightContainer {
-	margin-left: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.RatingForm {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.RatingFormInner {
-	display: flex;
-}
-
-.ReviewFormActionButtonsContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.ReviewFormActionButtons {
-	margin: 10px;
-	cursor: pointer;
-}
-
-.ReviewFormActionButtons.CloseBtn {
-	background-color: #4a4a4a;
-	border: black 1px solid;
-	padding: 4px;
-	border-radius: 5px;
-	font-size: small;
-	color: white;
-}
-
-.EditReviewFormButton {
-	margin: 10px;
-}
-
-.NewRatingLabel {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 10px;
-}
-
-.NewRatingDiv {
-	margin: 10px;
-}
-
-.RatingFormInnerButtonsContainer {
-	display: flex;
-}
-
-.ReviewFormInnerButtons {
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.RatingFormContainerNew {
-	background-color: #b9b9b9;
-	padding: 25px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 40px;
-}
-
-.RatingFormNew {
-	display: flex;
-	flex-direction: column;
-}
-
-.RatingFormNewSubmit {
-	border-radius: 10px;
-	color: white;
-}
-
-.RatingFormContainerNewInner {
-	font-size: larger;
-	margin: 40px;
-}
-
-.divisionLeft{
-	color: green;
-}
-
-.resortHeaderInfo>h1{
-	color:green
-}
-
 
 .resortDescription{
 	font-size: 20px;

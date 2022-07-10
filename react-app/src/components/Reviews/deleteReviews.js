@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { deleteReview } from '../../store/reviews'
 import { getResorts } from '../../store/resorts';
+import './Reviews.css'
 
 const DeleteReview = ({reviewProp, setEditOpen}) => {
   const history = useHistory();
@@ -16,8 +17,8 @@ const DeleteReview = ({reviewProp, setEditOpen}) => {
   };
 
   return (
-    <button onClick={handleDelete}>
-      Delete
+    <button className="review-delete-button" onClick={handleDelete}>
+      <i class="fa fa-trash-o"></i>
     </button>
   )
 }
