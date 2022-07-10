@@ -1,62 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { authenticate } from "./store/session";
 import { getResorts } from "./store/resorts";
-import NavigationBar from './components/NavigationBar/index';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
-import { authenticate } from './store/session';
-import AllResorts from './components/AllResortsPage/AllResorts';
-import SingleResort from './components/AllResortsPage/SingleResort';
-import CreateResort from './components/AllResortsPage/CreateResort';
-import EditResort from './components/AllResortsPage/EditResort';
+import { getReviews } from "./store/reviews";
+import { getBookings } from "./store/bookings";
+import Navigation from "./components/Navigation/index";
+import UserViewPage from "./components/UserViewPage";
+import CreateResort from "./components/Resorts/ResortsForm/CreateResort";
+import SingleResort from "./components/Resorts/SingleResort/SingleResort";
+import EditResort from "./components/Resorts/ResortsForm/EditResort";
+import AllResorts from "./components/Resorts/AllResorts"
+
+import ProfileRoutes from "./components/UserPage/ProfilePage";
+import PageNotFound from "./components/PageNotFound";
+
+import loader from "./images/loading.gif";
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const resorts = Object.values(useSelector(state => state.resort));
   const [filtered, setFiltered] = useState(resorts);
+  const [loaded, setLoaded] = useState(false);
 
+  const user = useSelector(state => state.session.user)
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       await dispatch(getResorts());
+      await dispatch(getReviews());
+      await dispatch(getBookings());
       setLoaded(true);
     })();
   }, [dispatch]);
 
   if (!loaded) {
-    return null;
+    return <img className="loading" src={loader} alt="loader" />;
   }
-
   return (
     <BrowserRouter>
+      <Navigation resorts={resorts} setFiltered={setFiltered} />
       <Switch>
-        <ProtectedRoute path='/resorts' exact={true} >
-          <AllResorts />
+
+        <Route path="/" exact={true}>
+          <UserViewPage />
+        </Route>
+
+        <ProtectedRoute path={["/profile", "/profile/@my-resorts", ]} exact={true} >
+          <ProfileRoutes />
         </ProtectedRoute>
-        <ProtectedRoute path='/resorts/:resortId' exact={true} >
-          <SingleResort setLoaded={setLoaded} loaded={loaded}/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/resorts/create/new" exact={true}>
+
+        <ProtectedRoute path="/resorts/new" exact={true}>
           <CreateResort />
         </ProtectedRoute>
+
+        <ProtectedRoute path="/resorts" exact={true}>
+          <AllResorts />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/resorts/:resortId" exact={true}>
+          <SingleResort setLoaded={setLoaded} loaded={loaded} />
+        </ProtectedRoute>
+
         <ProtectedRoute path="/resorts/:resortId/edit" exact={true}>
           <EditResort />
         </ProtectedRoute>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <NavigationBar resorts={resorts} setFiltered={setFiltered} />
-        </Route>
+
+        <PageNotFound />
+
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

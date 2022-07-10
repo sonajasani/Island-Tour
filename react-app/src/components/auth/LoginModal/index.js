@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 import { Modal } from '../../../context/Modal';
 import LoginForm from "./LoginForm";
-import './LoginForm.css'
-/**********************************************************************************/
+
 
 function LoginModal() {
 
@@ -21,9 +20,9 @@ function LoginModal() {
         </Modal>
       )}
     </>
-  )
-}
 
-/**********************************************************************************/
+  )
+
+}
 
 export default LoginModal;

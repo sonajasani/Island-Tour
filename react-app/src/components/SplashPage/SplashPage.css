@@ -1,0 +1,42 @@
+.splash-page-one {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+	background-image: url("https://c4.wallpaperflare.com/wallpaper/143/63/601/tropical-paradise-wallpaper-preview.jpg");
+	background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+	color: white;
+}
+
+.splash-text-content {
+	margin-top:100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: rgba(115, 243, 243, 0);
+	width: 80%;
+}
+
+
+.splash-text-content>h1 {
+    font-size: 90px;
+    font-style: italic;
+    font-family:serif;
+    color: white;
+}
+
+
+.splash-sub-title {
+	color: white;
+	line-height: 30px;
+    font-size: 30px;
+}
+
+
+.splash-demo {
+	width: 200px;
+}

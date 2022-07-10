@@ -1,20 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { IconContext } from "react-icons";
+
+
 import './index.css';
+import { ModalProvider } from './context/Modal';
 import App from './App';
 import configureStore from './store';
-import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <IconContext.Provider value={{ className: "react-icons" }}>
       <ModalProvider>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </ModalProvider>
-    </Provider>
+    </IconContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

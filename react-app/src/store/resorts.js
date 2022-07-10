@@ -2,7 +2,7 @@ const GET_ALL_RESORTS = "/resorts/getAllResorts";
 const GET_RESORT = "/resorts/getResort";
 const CREATE_RESORT = "/resorts/create";
 const EDIT_RESORT = "/resorts/edit";
-const DELETE_RESORT = "/resorts/delete";
+const DELETE_RESORT= "/resorts/delete";
 
 const loadResorts = (resorts) => ({
 	type: GET_ALL_RESORTS,
@@ -49,10 +49,7 @@ export const getResort = (id) => async (dispatch) => {
 	}
 };
 
-
-
 export const addResort = (data) => async (dispatch) => {
-	
 	const response = await fetch("/api/resorts/new", {
 		method: "POST",
 		headers: {
@@ -60,7 +57,6 @@ export const addResort = (data) => async (dispatch) => {
 		},
 		body: JSON.stringify(data),
 	});
-
 
 	if (response.ok) {
 		const data = await response.json();
@@ -79,8 +75,9 @@ export const addResort = (data) => async (dispatch) => {
 
 
 
-export const modifyResort = (data) => async (dispatch) => {
-	const response = await fetch(`/api/resorts/${data.resortId}`, {
+export const modifyResort = (data, resortId) => async (dispatch) => {
+
+	const response = await fetch(`/api/resorts/${resortId}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -115,20 +112,14 @@ export const eraseResort = (id) => async (dispatch) => {
 	}
 };
 
-
-
 //AWS upload images
 export const uploadImage = (imageData) => async dispatch => {
 	const { url, resort_id, image } = imageData;
-	
 
 	const formData = new FormData();
 	formData.append("url", url);
 	formData.append("resort_id", resort_id);
 	formData.append("image", image);
-
-	console.log(formData, "*****form data**********")
-
 
 	const res = await fetch('/api/images/upload', {
 		method: "POST",
@@ -140,8 +131,6 @@ export const uploadImage = (imageData) => async dispatch => {
 	}
 
 }
-
-/***************************************************************/
 
 const resortsReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -156,7 +145,7 @@ const resortsReducer = (state = {}, action) => {
 		case EDIT_RESORT:
 			return { ...state, [action.resort.id]: action.resort };
 		case DELETE_RESORT:
-			let newState = { ...state };
+			const newState = { ...state };
 			delete newState[action.resort.id];
 			return newState;
 		default:

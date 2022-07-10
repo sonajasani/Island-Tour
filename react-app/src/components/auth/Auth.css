@@ -1,0 +1,83 @@
+.authInputBox {
+	border: none;
+	background-color: rgb(239, 239, 239);
+	display: block;
+	width: 100%;
+	margin-bottom: 1em;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1.2em;
+	border-radius: 5px;
+}
+
+.authInputBox:focus {
+	outline: none;
+	width: 100%;
+	font-family: "Open Sans", sans-serif;
+}
+
+.auth-input{
+	width:100%
+}
+
+.submit-btn-div {
+	background-color: green;
+	color: white;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.submit-btn-div:hover {
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	opacity: .8;
+	font-family: sans-serif;
+	font-size: 21px;
+}
+
+.underline-div{
+	border-top: 2px solid black;
+	width: 300px;
+	padding-bottom: 25px;
+}
+
+.demo-btn{
+	background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+	color: black;
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.demo-btn:hover{
+	box-shadow: 4px 4px 8px red;
+}
+
+
+.auth-input{
+	width:100%;
+}
+
+.login-form-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 40px 60px;
+}
+
+.login-form-div>img {
+	border: 1px solid black;
+	border-radius: 50%;
+	height: 80px;
+	width:80px;
+}
+
+.login-form-div>h1{
+	color:rgb(4, 87, 4);
+}

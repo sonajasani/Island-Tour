@@ -5,13 +5,13 @@ from datetime import date
 # # Adds a demo user, you can add other users here if you want
 def seed_bookings():
     booking1 = Booking(
-        resort_id=1, user_id=1, check_in=date(2022, 9, 15), check_out=date(2023, 5, 20))
+        resort_id=1, user_id=1, start_date=date(2023, 1, 1), end_date=date(2023, 2, 2))
     booking2 = Booking(
-        resort_id=2, user_id=2, check_in=date(2022, 10, 15), check_out=date(2023, 2, 6))
+        resort_id=2, user_id=2, start_date=date(2023, 3, 3), end_date=date(2023, 3, 5))
     booking3 = Booking(
-        resort_id=3, user_id=3, check_in=date(2022, 11, 15), check_out=date(2023, 1, 2))
+        resort_id=3, user_id=3, start_date=date(2022, 11, 11), end_date=date(2022, 12, 11))
     booking4 = Booking(
-        resort_id=4, user_id=1, check_in=date(2022, 12, 15), check_out=date(2022, 11, 9))
+        resort_id=2, user_id=1, start_date=date(2022, 12, 15), end_date=date(2022, 12, 30))
 
     db.session.add(booking1)
     db.session.add(booking2)
@@ -21,6 +21,11 @@ def seed_bookings():
     db.session.commit()
 
 
+# # Uses a raw SQL query to TRUNCATE the users table.
+# # SQLAlchemy doesn't have a built in function to do this
+# # TRUNCATE Removes all the data from the table, and RESET IDENTITY
+# # resets the auto incrementing primary key, CASCADE deletes any
+# # dependent entities
 def undo_bookings():
     db.session.execute('TRUNCATE resorts RESTART IDENTITY CASCADE;')
     db.session.commit()

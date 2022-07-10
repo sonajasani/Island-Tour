@@ -1,0 +1,60 @@
+
+/* Modal for bookings */
+.booking-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	box-sizing: border-box;
+	width: 500px;
+	height: 600px;
+}
+
+.booking-modal .react-icons {
+	cursor: pointer;
+	align-self: start;
+	margin-top: 20px;
+	overflow: visible;
+	transition: all 0.3s ease-in-out;
+}
+
+.booking-modal .cancel-icons:hover {
+	transform: scale(1.2);
+}
+
+.booking-modal h2 {
+	text-align: center;
+}
+
+.booking-modal img {
+	width: 90%;
+	padding-bottom: 10px;
+}
+
+.booking-modal p {
+	padding-left: 30px;
+}
+.booking-modal h4 {
+	align-self: flex-start;
+}
+
+.booking-modal .booking-section {
+	border-bottom: 1px solid #bfbfbfa5;
+	width: 100%;
+}
+
+.booking-modal button {
+	outline: none;
+	padding: 10px 20px;
+	margin-top: 20px;
+	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+}
+
+.booking-modal button:hover {
+	background-color: red;
+	color: white;
+}
+
+/* Auth modal styles */
+
