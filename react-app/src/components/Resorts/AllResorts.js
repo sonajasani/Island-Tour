@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  useHistory, NavLink } from "react-router-dom";
-import './Resort.css'
+import './AllResort.css'
 
 import {getResorts} from '../../store/resorts'
 
@@ -39,6 +39,7 @@ function AllResorts() {
     return (
         <>
             <div className='all-resort-div'>
+                <h1>Famous Island Resorts Around The World !</h1>
                 <div>
                     <NavLink to='resorts/new' className='upload-resort-btn'>
                         <button>
@@ -46,7 +47,7 @@ function AllResorts() {
                         </button>
                     </NavLink>
                 </div>
-                <h1>Famous Island Resorts In The World !</h1>
+                
                 <div className="resorts-div">
                     <div className='resort-sub-div'>
                         <div className="continent-resort">

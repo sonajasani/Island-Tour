@@ -62,7 +62,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path="/resorts/:resortId" exact={true}>
-          <SingleResort setLoaded={setLoaded} loaded={loaded} />
+          <SingleResort setLoaded={setLoaded} loaded={loaded} resorts={resorts} />
         </ProtectedRoute>
 
         <ProtectedRoute path="/resorts/:resortId/edit" exact={true}>

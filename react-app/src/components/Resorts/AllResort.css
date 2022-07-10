@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.all-resort-div>h1{
+    color:white;
+}
+
 .resorts-div{
     display: flex;
     flex-direction: row;
@@ -48,7 +52,8 @@
 .upload-resort-btn>button{
     height: 40px;
     font-size: 23px;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     background-color: teal;
     border-radius: 10px;
 }

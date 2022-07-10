@@ -10,19 +10,6 @@
 	gap: 2em;
 }
 
-.imagesResort {
-	display: grid;
-	gap: 0.4em;
-	width: 100%;
-	grid-template-rows: repeat(2, 1fr);
-	grid-template-columns: repeat(4, 1fr);
-	grid-auto-flow: dense;
-}
-.imagesResort > *:first-child {
-	grid-column: span 2;
-	grid-row: span 2;
-}
-
 
 .resortDescription {
 	line-height: 1.5em;
@@ -217,4 +204,52 @@
 .RatingFormContainerNewInner {
 	font-size: larger;
 	margin: 40px;
+}
+
+.divisionLeft{
+	color: green;
+}
+
+.resortHeaderInfo>h1{
+	color:green
+}
+
+
+.resortDescription{
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.resort-amenities{
+	border-left: 0.5px solid rgb(212, 211, 211);
+	padding-left: 35px;
+	margin-top: 25px;
+}
+
+.resort-amenities>h2{
+	margin-top: -10px;
+	color: green;
+	text-decoration: 1px solid green underline;
+}
+
+.resort-amenities>p{
+	color:green;
+	font-weight: 600;
+	font-size: 19px;
+}
+
+.divisionLeft>h2{
+	text-decoration: 1px solid green underline;
+}
+
+.divisionLeft>h3{
+	border: 1px solid green;
+	width:fit-content;
+	padding: 10px;
+	color:black;
+}
+
+.main-review-div{
+	border-top:  0.5px solid rgb(212, 211, 211);
+	margin-top: 20px;
 }

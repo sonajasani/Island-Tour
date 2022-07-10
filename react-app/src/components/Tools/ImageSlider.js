@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { MdArrowBackIos } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
-
+import './ImageSlider.css'
 
 function ImageSlider({resort}) {
   const [current, setCurrent] = useState(0);
@@ -21,7 +21,6 @@ function ImageSlider({resort}) {
     <div className="slider">
       <MdArrowBackIos onClick={prevSlide} className="left-clicker"/>
       <MdArrowForwardIos onClick={nextSlide} className="right-clicker" />
-      <NavLink to={`/resorts/${resort?.id}`} key={resort?.id}>
       {images.map((image, idx) => (
         <div className={idx === current ? 'slide active' : 'slide'} key={idx}>
           {idx === current && (
@@ -29,7 +28,6 @@ function ImageSlider({resort}) {
             )}
         </div>
       ))}
-      </NavLink>
     </div>
   )
 }

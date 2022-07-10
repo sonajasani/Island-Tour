@@ -8,6 +8,7 @@ import ReviewForm from "../../Reviews/postReviews";
 import DeleteResort from "./DeleteResort";
 import PageNotFound from "../../PageNotFound";
 import { getResorts } from "../../../store/resorts";
+import ImageSlider from'../../Tools/ImageSlider'
 
 import "./SingleResort.css";
 
@@ -53,13 +54,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 			<div key={resort?.id}>
 				<div className="resortHeader">
 					<div className="resortHeaderInfo">
-						<h2>{resort?.name}</h2>
-						<h3>
-							Island: {resort?.island}
-						</h3>
-						<h3>
-							Country: {resort?.country}
-						</h3>
+						<h1>{resort?.name}</h1>
 					</div>
 					<div className="resortHeaderButtons">
 						{resort?.host.id == user?.id && (
@@ -73,21 +68,14 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					</div>
 				</div>
 				<div className="imagesResort">
-					{imagesArr?.map((image, i) => {
-						return (
-							<img
-								className="singleImageResort"
-								src={image.url}
-								alt={image}
-								key={i}
-							/>
-						);
-					})}
+					<ImageSlider resort={resort}/>
 				</div>
 				<div className="divisionSpace">
 					<div className="divisionLeft">
+						<h2>
+							Island: {resort?.island},   Country: {resort?.country}
+						</h2>
 						<p className="resortDescription">{resort?.description}</p>
-						<h3>Resort Owned by: {resort?.host.username}</h3>
 						<h3>Price: ${resort?.price}/night</h3>
 					</div>
 					<div className="resort-amenities">
@@ -125,8 +113,10 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					</div>
 				</div>
 			</div>
-			<GetReviews />
-			{disable && <ReviewForm />}
+			<div className="main-review-div">
+				<GetReviews />
+				{disable && <ReviewForm />}
+			</div>
 		</div>
 	);
 }
