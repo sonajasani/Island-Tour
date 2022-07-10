@@ -1,0 +1,29 @@
+.not-found-page{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto auto;
+  
+}
+
+.not-found-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: -200px;
+}
+
+.page-not-found-link{
+    margin-top: -50px;
+    color: rgb(134, 10, 31);
+    text-decoration: 1px solid rgb(134, 10, 31) underline ;
+}
+  
+
+.page-not-found-link:hover{
+    font-size: 35px;
+    color: red;
+}

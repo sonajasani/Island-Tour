@@ -24,7 +24,6 @@
 /* Styles for the Profile Page */
 
 .banner-wrapper{
-  background-image: url("../images/profileBackground.png");
   height: fit-content;
   background-repeat: no-repeat;
   background-size: cover;

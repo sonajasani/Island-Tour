@@ -3,7 +3,7 @@
 @import url('./css/ProfilePage.css');
 @import url('./css/ResortsForm.css');
 @import url('./css/ConfirmationBooking.css');
-@import url('./css/PageNotFound.css');
+
 
 
 :root {
@@ -11,8 +11,6 @@
   --secondary-theme-color: #F3F3F3;
   --third-theme-color: #4A4A4A;
   --last-theme-color: #FFDD67;
-
-
 }
 
 #root,
