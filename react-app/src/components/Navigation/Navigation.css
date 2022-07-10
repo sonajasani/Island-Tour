@@ -292,3 +292,28 @@
 	color: black;
 	border-bottom: 2px solid black;
 }
+
+
+.dropdown-txt{
+	color: rgb(46, 46, 150);
+	font-weight: 600;
+}
+
+.dropdown-txt:hover{
+	color: green;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.profile-nav-selection>p{
+	padding-left: 5px;
+}
+
+.profile-nav-selection>i{
+	color: rgb(6, 82, 6)
+}
+
+.profile-nav-selection>i:hover{
+	color: red;
+	font-size:23px;
+}

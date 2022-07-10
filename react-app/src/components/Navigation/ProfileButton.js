@@ -46,18 +46,18 @@ function ProfileButton() {
         <div className='profile-btn-nav' >
           <NavLink className="profile" to="/profile">
             <div className="profile-nav-selection">
-              {/* <CgProfile /> */}
+              <i class="fa fa-user-circle-o"></i>
               <p className="dropdown-txt">Profile</p>
             </div>
           </NavLink>
           <NavLink className="listings" to="/profile/@my-resorts">
             <div className="profile-nav-selection">
-              {/* <FaHome /> */}
+              <i class="fa fa-home"></i>
               <p className="dropdown-txt">My Resorts</p>
             </div>
           </NavLink>
           <div className="profile-nav-selection" onClick={onLogout}>
-            {/* <AiOutlineLogout /> */}
+            <i class="fa fa-sign-out"></i>
             <p className="dropdown-txt">Logout</p>
           </div>
         </div>
