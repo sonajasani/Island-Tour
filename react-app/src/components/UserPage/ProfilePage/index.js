@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 import ProfileListings from "./ProfileListings";
 import ProfilePage from "./ProfilePage";
+import BookingCard from '../BookingsPage/BookingCard';
 
 
 function ProfileRoutes() {
@@ -22,6 +23,13 @@ function ProfileRoutes() {
         </Route>
         <Route path='/profile/@my-resorts' >
           <ProfileListings user={user} myResorts={myResorts} />
+        </Route>
+        <Route path='/profile/@my-reservations' >
+          <div className="my-bookings-container">
+            {myBookings?.map( booking => (
+              <BookingCard booking={booking} key={booking.id}/>
+            ))}
+          </div>
         </Route>
       </Switch>
 

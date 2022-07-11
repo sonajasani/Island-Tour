@@ -9,7 +9,7 @@ function ProfileReviews() {
 
   return (
     <div className="profile-reviews-page profile-section">
-      <h1>
+      {/* <h1>
         Your Reviews:
       </h1>
       {userReviews.map(review => {
@@ -23,7 +23,7 @@ function ProfileReviews() {
             Review: {review.review}
           </div>
         )
-      })}
+      })} */}
     </div>
 
   )

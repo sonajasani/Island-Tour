@@ -25,22 +25,17 @@ const BookingModal = ({ setModal, booking, resort }) => {
 
     return (
         <div className="booking-modal">
-            <GrClose className="cancel-icons" onClick={() => setModal(false)} />
+            {/* <GrClose className="booking-cancel-icons" onClick={() => setModal(false)} /> */}
             <h2>{resort.name}</h2>
             <img className='booking-image' src={image?.url} alt="home" />
-            <h4>Booking Information:</h4>
+            <h4>Your Reservation:</h4>
             <div className='booking-section'>
-                <p>Check-in: {start_date.slice(0, 16)}</p>
-                <p>Check-out:{end_date.slice(0, 16)}</p>
+                <p>Check-in Date: {start_date.slice(0, 16)}</p>
+                <p>Check-out Date:{end_date.slice(0, 16)}</p>
                 <p>Location: {resort.island}, {resort.country}, {resort.continent}</p>
                 <p>Total: ${numOfDays * resort.price}</p>
             </div>
-            <h4>Contact the host:</h4>
-            <div className='booking-section'>
-                <p>Host: {resort.host.username}</p>
-                <p>Email: {resort.host.email}</p>
-            </div>
-            <button onClick={(e) => deleteHandler(e, id)}>Cancel Trip</button>
+            <button className='booking-cancel-btn' onClick={(e) => deleteHandler(e, id)}>Cancel Reservation</button>
         </div>
     )
 }

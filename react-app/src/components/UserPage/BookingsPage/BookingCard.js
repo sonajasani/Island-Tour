@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Modal } from "../../../context/Modal";
 
 import BookingModal from "./BookingModal";
+import './BookingCard.css'
 
 
 function BookingCard({ booking }) {
@@ -12,25 +13,27 @@ function BookingCard({ booking }) {
   const resort = useSelector(state => state.resort[resort_id])
   const { name, island, country, host } = resort;
 
-  useEffect(()=>{
-    let modalDiv= document.body.getElementsByClassName("booking-modal")[0]
-    document.body.style.overflowY = modal ? "hidden" : "scroll";
-    if(modalDiv){
+  // useEffect(()=>{
+  //   let modalDiv= document.body.getElementsByClassName("booking-modal")[0]
+  //   if(modalDiv){
 
-      modalDiv.style.overflowY = modal ? "scroll" : "hidden";
-    }
+  //     modalDiv.style.overflowY = modal ? "scroll" : "hidden";
+  //   }
 
 
-  }, [modal])
+  // }, [modal])
   return (
     <>
       <div className="booking-card" onClick={() => setModal(true)}>
         <img src={resort.images[0].url} alt="booking card"></img>
         <div className="booking-card-info">
-          <h3 className="title">{name}</h3>
-          <p>{island}, {country}</p>
-          <p>From {start_date.slice(0, 16)} to {end_date.slice(0, 16)}</p>
-          <p className="bold">Hosted by {host.first_name ? `${host.first_name} ${host.last_name}` : host.username} </p>
+          <p className="title">{name}</p>
+          <p className="bold">Resort Owner: {host.first_name ? `${host.first_name} ${host.last_name}` : host.username} </p>
+          <p>Email: {resort.host.email}</p>
+          <br></br>
+          <p>Location: {island}, {country}</p>
+          <p>From: {start_date.slice(0, 16)} {end_date.slice(0, 16)}</p>
+          <p>To: {end_date.slice(0, 16)}</p>
         </div>
       </div>
       {modal && (

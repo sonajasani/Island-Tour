@@ -49,7 +49,7 @@ function App() {
           <UserViewPage />
         </Route>
 
-        <ProtectedRoute path={["/profile", "/profile/@my-resorts", ]} exact={true} >
+        <ProtectedRoute path={["/profile", "/profile/@my-resorts", "/profile/@my-reservations" ]} exact={true} >
           <ProfileRoutes />
         </ProtectedRoute>
 

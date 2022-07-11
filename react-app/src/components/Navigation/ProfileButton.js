@@ -56,6 +56,12 @@ function ProfileButton() {
               <p className="dropdown-txt">My Resorts</p>
             </div>
           </NavLink>
+          <NavLink className="listings" to="/profile/@my-reservations">
+            <div className="profile-nav-selection">
+              <i class="fa fa-ticket" aria-hidden="true"></i>
+              <p className="dropdown-txt">Reservations</p>
+            </div>
+          </NavLink>
           <div className="profile-nav-selection" onClick={onLogout}>
             <i class="fa fa-sign-out"></i>
             <p className="dropdown-txt">Logout</p>

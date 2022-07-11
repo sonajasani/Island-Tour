@@ -21,41 +21,45 @@ function ProfileListings() {
 
 	return (
 		<div className="profile-listings-page profile-section">
-			{userResorts.length ? (
-				userResorts.map((resort) => {
-					return (
-						<div className='resort-list-main'>
-							<Link
-								key={resort?.id}
-								className="resort-detail-link"
-								to={`/resorts/${resort?.id}`}
-							>
-								<div className="resortDetailBody">
-									<h2>{resort?.name}</h2>
-									<h3>${resort?.price}/night</h3>
-									<img className="listingResortImage" src={resort?.images[0]?.url} />
-								</div>
-							</Link>
-							<div className="resortHeaderButtons">
-								<div>
-									<DeleteResort resortId={resort.id} />
+			<div className='profile-resort-subdiv'>
+				{userResorts.length ? (
+					userResorts.map((resort) => {
+						return (
+						
+							<div className='resort-list-main'>
+								<Link
+									key={resort?.id}
+									className="resort-detail-link"
+									to={`/resorts/${resort?.id}`}
+								>
+									<div className="resortDetailBody">
+										<h3>{resort?.name}</h3>
+										<img className="listingResortImage" src={resort?.images[0]?.url} />
+									</div>
+								</Link>
+								<div className="resort-btns">
 									<NavLink to={`/resorts/${resort.id}/edit`}>
 										<button className="editResortBtn">
 											Edit Resort
 										</button>
 									</NavLink>
+									<DeleteResort resortId={resort.id} />
 								</div>
-								<div className="section-underline-div"></div>
 							</div>
-						</div>
-					);
-				})
-			) : (
-				<h1 className="noListingsMessage">
-					No Resort currently owned by you. Click on Upload New Resort to add a
-					Resort !!
-				</h1>
-			)}
+						);
+					})
+				) : (
+					<div className='no-resort-div'>
+						<h1 className="no-resort-message">
+							No Resort currently owned by you. Upload New Resort to add a
+							Resort !!
+						</h1>
+						<NavLink to='/resorts/new' className='no-resort-link'>
+							Click Here !!
+						</NavLink>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }

@@ -124,7 +124,6 @@ const Calendar = () => {
         };
         const booking = await dispatch(createBooking(newBooking))
         setBooked(booking)
-        // await dispatch(authenticate())
         setModal(true)
     }
 
@@ -134,6 +133,11 @@ const Calendar = () => {
             <div ref={refOne}>
                 {open &&
                     <div className='pickerWrap'>
+                        <div className='cancel-btn-calendar'>
+                            <button className='closeButton' onClick={() => setOpen(open => !open)}>
+                                <i class="fa fa-window-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
                         <DateRange
                             className='picker'
                             onChange={item => setRange([item.selection])}
@@ -147,8 +151,7 @@ const Calendar = () => {
                             showPreview={false}
                         />
                         <br />
-                        <button className='bookButton' onClick={handleSubmit} type='submit'>BOOK</button>
-                        <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>
+                        <button className='bookButton' onClick={handleSubmit} type='submit'>Book Resort</button>
                     </div>
                 }
             </div>

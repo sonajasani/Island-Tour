@@ -196,7 +196,7 @@
 
 .profile-btn-nav {
 	position: absolute;
-	background-color: #f1f1f1;
+	background-color: #ccf0d2;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 20;
 	display: flex;
@@ -206,7 +206,7 @@
 	top: 100px;
 	right:-10px;
 	width: 150px;
-	height: 150px;
+	height: 180px;
 	border-radius: 10px;
 	padding-left: 20px;
 	margin-right: 9%

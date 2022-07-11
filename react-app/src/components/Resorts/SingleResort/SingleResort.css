@@ -21,12 +21,6 @@
 	justify-content: center;
 }
 
-.resortHeaderButtons {
-	margin-left: 30%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
 .divisionSpace {
 	display: flex;
@@ -38,46 +32,6 @@
 .divisionLeft {
 	margin-right: 3em;
 }
-
-.editResortBtn {
-	background-color: #00509d;
-	color: white;
-	padding: 0.5em;
-	border: 1px solid transparent;
-	border-radius: 0.5em;
-	font-family: "Montserrat", sans-serif;
-}
-
-.editResortBtn:hover {
-	background-color: #0473db;
-	color: white;
-	padding: 0.5em;
-	border: 1px solid transparent;
-	border-radius: 0.5em;
-	cursor: pointer;
-	font-family: "Montserrat", sans-serif;
-}
-
-.deleteResortBtn {
-	background-color: #c81d25;
-	color: white;
-	padding: 0.5em;
-	border: 1px solid transparent;
-	border-radius: 0.5em;
-	font-family: "Montserrat", sans-serif;
-}
-
-.deleteResortBtn:hover {
-	background-color: #f51b26;
-	color: white;
-	padding: 0.5em;
-	border: 1px solid transparent;
-	border-radius: 0.5em;
-	cursor: pointer;
-	font-family: "Montserrat", sans-serif;
-}
-
-
 
 
 .divisionLeft{

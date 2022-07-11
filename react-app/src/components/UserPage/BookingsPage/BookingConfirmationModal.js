@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { useHistory } from "react-router-dom";
 
+import './Calendar.css'
 import { authenticate } from "../../../store/session";
 
 const BookingConfirmationModal = ({ booking, setModal }) => {
@@ -21,19 +22,18 @@ const BookingConfirmationModal = ({ booking, setModal }) => {
 	const checkIn = format(start, "MMMM do, yyyy");
 	const checkOut = format(end, "MMMM do, yyyy");
 
-	useEffect(() => {
-		setTimeout(() => {
-			dispatch(authenticate())
-			setModal(false)
-		}, 6000)
-	}, [])
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		dispatch(authenticate())
+	// 		setModal(false)
+	// 	}, 6000)
+	// }, [])
 
 	return (
 		<div className="bookingContainer">
+			<h1>Booking Confirmation:</h1>
 			<h2 className="booking-blurb">
-				Your reservation was a success, {user?.username}!
-				<br />
-				We hope you enjoy your stay!
+			  Name: {user?.username}
 			</h2>
 
 			<img
@@ -43,13 +43,13 @@ const BookingConfirmationModal = ({ booking, setModal }) => {
 			/>
 			<div className="booking-details">
 				<div className='booking-details-dates'>
-					<h3>Check-in: {booking.start_date.slice(0, 16)}</h3>
-					<h3>Check-out: {booking.end_date.slice(0, 16)}</h3>
+					<h3>Check-in Date: {booking.start_date.slice(0, 16)}</h3>
+					<h3>Check-out Date: {booking.end_date.slice(0, 16)}</h3>
 				</div>
 				<h3>
 					Location: #{resort?.island}, {resort?.country}
 				</h3>
-				<h3>Total: ${numOfDays * resort?.price}</h3>
+				<h3>Total Cost: ${numOfDays * resort?.price}</h3>
 			</div>
 		</div>
 	);
