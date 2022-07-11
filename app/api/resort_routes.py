@@ -86,21 +86,21 @@ def update_resort(id):
     
     if form.validate_on_submit():
         
-        resort.name=data['name'],
-        resort.island=data['island'],
-        resort.country=data['country'],
-        resort.continent=data['continent'],
-        resort.description=data['description'],
-        resort.price=data['price'],
-        resort.minibar=data['minibar'],
-        resort.gym=data['gym'],
-        resort.spa=data['spa'],
-        resort.jacuzzi=data['jacuzzi'],
-        resort.pool=data['pool'],
-        resort.room_service=data['room_service'],
-        resort.fire_place=data['fire_place'],
-        resort.wifi=data['wifi'],
-        resort.workspace=data['workspace'],
+        resort.name=data['name']
+        resort.island=data['island']
+        resort.country=data['country']
+        resort.continent=data['continent']
+        resort.description=data['description']
+        resort.price=data['price']
+        resort.minibar=data['minibar']
+        resort.gym=data['gym']
+        resort.spa=data['spa']
+        resort.jacuzzi=data['jacuzzi']
+        resort.pool=data['pool']
+        resort.room_service=data['room_service']
+        resort.fire_place=data['fire_place']
+        resort.wifi=data['wifi']
+        resort.workspace=data['workspace']
         resort.water_sports=data['water_sports']
         
 

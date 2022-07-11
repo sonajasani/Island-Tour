@@ -1,13 +1,15 @@
 import React from 'react'
 import {GrClose} from 'react-icons/gr';
-
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteBooking } from '../../../store/bookings';
+import {Modal} from '../../../context/Modal'
 
 const BookingModal = ({ setModal, booking, resort }) => {
     const dispatch = useDispatch();
     const { start_date, end_date, id } = booking
 
+    const [toggleDelete, setToggleDelete] = useState(false);
     const image = resort.images[0];
     const start = new Date(start_date)
     const startNew = start.getTime()
@@ -16,9 +18,10 @@ const BookingModal = ({ setModal, booking, resort }) => {
     const timeSpan = endNew - startNew;
     const numOfDays = timeSpan / (1000 * 60 * 60 * 24)
 
-    const deleteHandler = (e, bookingId) => {
+    const handleDelete = (e, bookingId) => {
         e.preventDefault()
         dispatch(deleteBooking(bookingId))
+        setToggleDelete(false)
         setModal(false)
     }
 
@@ -35,7 +38,20 @@ const BookingModal = ({ setModal, booking, resort }) => {
                 <p>Location: {resort.island}, {resort.country}, {resort.continent}</p>
                 <p>Total: ${numOfDays * resort.price}</p>
             </div>
-            <button className='booking-cancel-btn' onClick={(e) => deleteHandler(e, id)}>Cancel Reservation</button>
+            {/* <button className='booking-cancel-btn' onClick={(e) => deleteHandler(e, id)}>Cancel Reservation</button> */}
+            <div className='reservation-delete-button'>
+                <p className='booking-cancel-btn' onClick={() => setToggleDelete(true)}>Cancel Reservation</p>
+            { toggleDelete && 
+                <Modal onClose={() => setToggleDelete(false)}>
+                <div className='delete-reservation-container'> 
+                    <form className='delete-reservation-modal' onClick={(e) => handleDelete(e, id)} >
+                        <h2 id='delete-confirmation'>Are you sure you want to Cancel this Reservation?</h2>
+                        <button type='submit' className='delete-reservation-btn'>Delete</button>
+                    </form>
+                </div>
+                </Modal>
+            }
+            </div>
         </div>
     )
 }

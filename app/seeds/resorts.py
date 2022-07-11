@@ -5,7 +5,7 @@ from app.models import db, Resort
 def seed_resorts():
     property1 = Resort(
         user_id=1,
-        name="Soneva Jani",
+        name="Soneva Jani Resort",
         island="Medhufaru Island",
         country="Maldieves",
         continent="Asia",
@@ -25,7 +25,7 @@ def seed_resorts():
 
     property2 = Resort(
         user_id=2,
-        name="Silver Sand",
+        name="Silver Sand Resort",
         island="Andaman",
         country="India",
         continent="Asia",
@@ -165,7 +165,7 @@ def seed_resorts():
 
     property9 = Resort(
         user_id=3,
-        name="Angsana Balaclava",
+        name="Angsana Balaclava Resort",
         island="Balaclava",
         country="Mauritius",
         continent="Africa",
@@ -205,7 +205,7 @@ def seed_resorts():
 
     property11 = Resort(
         user_id=2,
-        name="Beach Club",
+        name="Beach Club Resort",
         island="Hamilton Island",
         country="Australia",
         continent="Oceania",
@@ -225,7 +225,7 @@ def seed_resorts():
 
     property12 = Resort(
         user_id=3,
-        name="Romantic Piha",
+        name="Romantic Piha Resort",
         island="Piha",
         country="New Zealand",
         continent="Oceania",
