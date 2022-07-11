@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { modifyResort } from "../../../store/resorts";
+import './ResortsForm.css'
 
 const EditResort = () => {
 	const history = useHistory();

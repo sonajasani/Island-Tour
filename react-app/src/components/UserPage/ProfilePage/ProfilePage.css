@@ -52,26 +52,4 @@
 }
 
 
-.about-me-container {
-  width: 100%;
-  display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.351);
-  padding-bottom: 20px;
-}
-
-.about-me-container img{
-  width: 200px;
-  max-height: 200px;
-  border: 5px solid var(--main-theme-color);
-
-}
-
-.about-me-container .bio{
-  padding-left: 40px;
-  
-}
-
-.about-me-container .about-me{
-  padding: 0px 10px;
-}
 

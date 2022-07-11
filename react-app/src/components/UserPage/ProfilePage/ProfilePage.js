@@ -1,5 +1,6 @@
 import BookingCard from '../BookingsPage/BookingCard';
 import profilePicture from '../../../images/ProfilePic.png'
+import './ProfilePage.css'
 
 function ProfilePage({ user }) {
   const { first_name, last_name, photo, username, bio, host } = user

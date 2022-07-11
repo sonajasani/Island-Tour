@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { addResort, getResorts } from "../../../store/resorts";
 import { uploadImage } from "../../../store/resorts";
 import ImageUploader from "../../Tools/ImageUploader";
+import './ResortsForm.css'
 
 const CreateResort = () => {
 	const history = useHistory();
