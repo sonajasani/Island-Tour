@@ -8,13 +8,13 @@ function ProfilePage({ user }) {
 
   return (
     <div className="profile-section">
-      {/* { user.id !== 1 && */}
+      { user.id !== 1 &&
       <div className='edit-delete-profile'>
         <NavLink  className='profile-edit' to='/profile/@me-edit'>
           <p>Edit Profile Info</p>
         </NavLink>
       </div>
-      {/* } */}
+      } 
       <div className="profile-page">
         <div className="profile-username">
           <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
