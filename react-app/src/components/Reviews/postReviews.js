@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { postReview } from '../../store/reviews'
@@ -12,8 +12,21 @@ const ReviewForm = () => {
   const dispatch = useDispatch();
   const {resortId} = useParams();
 
+  const resort_id = resortId;
+  
   const [adjRating, setAdjRating] = useState(0);
   const [review, setReview] = useState('');
+  const [error, setError] = useState([]);
+  const rating = adjRating/20
+
+
+  
+ useEffect(() => {
+    const err = [];
+    if (rating < 1 || rating > 5) err.push('Please submit a rating between 1 to 5 stars')
+    setError(err);
+  },[review, rating])
+
 
   const handleRating = (rate) => {
     setAdjRating(rate)
@@ -21,9 +34,6 @@ const ReviewForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const resort_id = resortId;
-    const rating = adjRating/20
 
     const payload = {
       resort_id,
@@ -34,17 +44,27 @@ const ReviewForm = () => {
     if (rating < 1 || rating > 5) {
       return alert('Please submit a rating between 1 to 5 stars')
     }
-
-    await dispatch(postReview(payload, resort_id))
-    await dispatch(getResorts())
-    await dispatch(getReviews())
+    if (error.length <= 0){
+      await dispatch(postReview(payload, resort_id))
+      await dispatch(getResorts())
+      await dispatch(getReviews())
+    }
   };
+
+  
+
+
 
 
   return (
     <div className='RatingFormContainerNew'>
       <div className='RatingFormContainerNewInner'>
         Post Your Reivew
+      </div>
+      <div classname='err-msg-div'>
+        {error.length > 0 && error.map((err, idx) => (
+          <p className='review-err-msg' key={idx}>Note: {err}</p>
+        ))}
       </div>
       <form onSubmit={handleSubmit} className='RatingFormNew'>
         <div className='RatingFormInner'>

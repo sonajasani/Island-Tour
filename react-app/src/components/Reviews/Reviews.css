@@ -261,3 +261,19 @@
 .ReviewFormActionButtons.CloseBtn:hover{
     font-size: 23px;
 }
+
+
+/*******************************************************************/
+
+.err-msg-div{
+	width: 100%;
+}
+
+
+.review-err-msg{
+	margin-top: 10px;
+	color:rgb(219, 3, 3);
+	text-align: center;
+	font-size: 18px;
+	font-weight:600;
+}

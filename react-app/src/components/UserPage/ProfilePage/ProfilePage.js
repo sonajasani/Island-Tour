@@ -8,18 +8,17 @@ function ProfilePage({ user }) {
 
   return (
     <div className="profile-section">
-      { user.id !== 1 &&
+      {/* { user.id !== 1 && */}
       <div className='edit-delete-profile'>
-        <NavLink  className='profile-edit' to='/profile/@me-edit'>
-          <p>Edit Profile Info</p>
+        {/* <NavLink  className='profile-edit' to='/profile/@me-edit'>
+          <button className='profile-edit-btn'>Edit Profile Info</button>
         </NavLink>
+        <p className='profile-delete-btn'>Delete</p> */}
       </div>
-      } 
+     {/* }  */}
       <div className="profile-page">
         <div className="profile-username">
           <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
-        </div>
-        <div className="about-me-container">
           <img src={photo ? photo : profilePicture} alt="avatar"/>
           <h3 className='profile-page-bio'>{bio}</h3>
         </div>

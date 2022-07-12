@@ -4,32 +4,73 @@
   background-color:black;
   display:flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
-.profile-edit>p{
-  color:white
+
+.edit-delete-profile{
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right:3%;
 }
+
+
+.profile-edit-btn{
+  margin-right: 7px;
+  background-color: rgb(5, 179, 121);
+  font-size: 17px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border:2px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 7px rgb(3, 248, 154);
+}
+
+.profile-edit-btn:hover{
+  background-color: rgb(4, 112, 131);
+  font-size:18px;
+}
+
+.profile-delete-btn{
+  color:white;
+  cursor: pointer;
+  margin-left: 7px;
+  font-size: 17px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border:2px solid white;
+  border-radius: 10px;
+  background-color: brown;
+  box-shadow: 0px 4px 8px rgb(250, 11, 11);
+}
+
+.profile-delete-btn:hover{
+  background-color: rgb(119, 7, 7);
+  font-size:18px;
+}
+
 
 .profile-page{
   display:flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 1%;
   margin-left: 15%;
   margin-right: 15%;
 }
 
-.about-me-container{
-  display:flex;
-}
 
-.about-me-container>img{
+.profile-username>img{
   width: 300px;
   height:250px;
   border-radius:50%;
   border: 3px solid green;
   box-shadow: 0px 5px 15px rgb(4, 77, 4);
-  margin-top: -120px
 }
 
 
@@ -38,6 +79,7 @@
   margin-left: 100px;
   margin-right: 50px;
   font-size: 20px;
+  margin-top: 50px;
 }
 
 
@@ -45,7 +87,8 @@
   color: white;
   font-size: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 

@@ -125,192 +125,201 @@ const CreateResort = () => {
 						</div>
 					)}
 					<div className="formGroupInput">
-						<div>
-							<label htmlFor="name">Name</label>
-							<input
-								className="inputForm"
-								required
-								name="name"
-								type="text"
-								placeholder="Resort Name"
-								onChange={(e) => setName(e.target.value)}
-								value={name}
-							/>
+						<div className='input-field-form'>
+							<div>
+								<label htmlFor="name">Name</label>
+								<input
+									className="inputForm"
+									required
+									name="name"
+									type="text"
+									placeholder="Resort Name"
+									onChange={(e) => setName(e.target.value)}
+									value={name}
+								/>
+							</div>
+							<div>
+								<label htmlFor="island">Island</label>
+								<input
+									className="inputForm"
+									required
+									name="island"
+									type="text"
+									placeholder="Island"
+									onChange={(e) => setIsland(e.target.value)}
+									value={island}
+								/>
+							</div>
+							<div>
+								<label htmlFor="country">Country</label>
+								<input
+									className="inputForm"
+									required
+									name="country"
+									type="text"
+									placeholder="Country"
+									onChange={(e) => setCountry(e.target.value)}
+									value={country}
+								/>
+							</div>
+							<div>
+								<label htmlFor="description">Description</label>
+								<textarea
+									className="inputForm"
+									required
+									name="description"
+									type="text"
+									placeholder="Description"
+									value={description}
+									onChange={(e) => setDescription(e.target.value)}
+								/>
+							</div>
+							<div>
+								<label htmlFor="price">Price per day</label>
+								<input
+									className="inputForm"
+									required
+									name="price"
+									type="number"
+									placeholder="Price/Day"
+									onChange={(e) => setPrice(e.target.value)}
+									value={price}
+								/>
+							</div>
+							<div>
+								<label htmlFor="continent">Continent</label>
+								<select
+									required
+									className="inputForm"
+									name="continent"
+									onChange={(e) => setContinent(e.target.value)}
+									value={continent}
+								>
+									{continents.map((continent) => (
+										<option value={continent}>{continent}</option>
+									))}
+								</select>
+							</div>
 						</div>
-						<div>
-							<label htmlFor="island">Island</label>
-							<input
-								className="inputForm"
-								required
-								name="island"
-								type="text"
-								placeholder="Island"
-								onChange={(e) => setIsland(e.target.value)}
-								value={island}
-							/>
-						</div>
-						<div>
-							<label htmlFor="country">Country</label>
-							<input
-								className="inputForm"
-								required
-								name="country"
-								type="text"
-								placeholder="Country"
-								onChange={(e) => setCountry(e.target.value)}
-								value={country}
-							/>
-						</div>
-						<div>
-							<label htmlFor="description">Description</label>
-							<textarea
-								required
-								name="description"
-								type="text"
-								placeholder="Description"
-								value={description}
-								onChange={(e) => setDescription(e.target.value)}
-							/>
-						</div>
-						<div>
-							<label htmlFor="continent">Continent</label>
-							<select
-								required
-								name="continent"
-								onChange={(e) => setContinent(e.target.value)}
-								value={continent}
-							>
-								{continents.map((continent) => (
-									<option value={continent}>{continent}</option>
-								))}
-							</select>
-						</div>
-						<div>
-							<label htmlFor="price">Price per day</label>
-							<input
-								required
-								name="price"
-								type="number"
-								placeholder="Price/Day"
-								onChange={(e) => setPrice(e.target.value)}
-								value={price}
-							/>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='minibar'
-								checked={minibar}
-								value={minibar}
-								onChange={(e) => setMinibar(!minibar)}
-							>
-							</input>
-							<label htmlFor="minibar">Minibar</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='gym'
-								checked={gym}
-								value={gym}
-								onChange={(e) => setGym(!gym)}
-							>
-							</input>
-							<label htmlFor="gym">Fitness Center</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='spa'
-								checked={spa}
-								value={spa}
-								onChange={(e) => setSpa(!spa)}
-							>
-							</input>
-							<label htmlFor="spa">Spa</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='jacuzzi'
-								checked={jacuzzi}
-								value={jacuzzi}
-								onChange={(e) => setJacuzzi(!jacuzzi)}
-							>
-							</input>
-							<label htmlFor="jacuzzi">Jacuzzi</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='pool'
-								checked={pool}
-								value={pool}
-								onChange={(e) => setPool(!pool)}
-							>
-							</input>
-							<label htmlFor="pool">Swimming Pool</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='room_service'
-								checked={room_service}
-								value={room_service}
-								onChange={(e) => setRoomService(!room_service)}
-							>
-							</input>
-							<label htmlFor="room_service">Room Service</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='fire_place'
-								checked={fire_place}
-								value={fire_place}
-								onChange={(e) => setFirePlace(!fire_place)}
-							>
-							</input>
-							<label htmlFor="fire_place">Fire Place</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='wifi'
-								checked={wifi}
-								value={wifi}
-								onChange={(e) => setWifi(!wifi)}
-							>
-							</input>
-							<label htmlFor="wifi">Wifi</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='workspace'
-								checked={workspace}
-								value={workspace}
-								onChange={(e) => setWorkspace(!workspace)}
-							>
-							</input>
-							<label htmlFor="workspace">Workspace</label>
-						</div>
-						<div>
-							<input
-								type='checkbox'
-								name='water_sports'
-								checked={water_sports}
-								value={water_sports}
-								onChange={(e) => setWaterSports(!water_sports)}
-							>
-							</input>
-							<label htmlFor="water_sports">Water Activities</label>
+						<div className='checkbox-field'>
+							<h3>Amenities:</h3> 
+							<div>
+								<input
+									
+									type='checkbox'
+									name='minibar'
+									checked={minibar}
+									value={minibar}
+									onChange={(e) => setMinibar(!minibar)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="minibar">Minibar</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='gym'
+									checked={gym}
+									value={gym}
+									onChange={(e) => setGym(!gym)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="gym">Fitness Center</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='spa'
+									checked={spa}
+									value={spa}
+									onChange={(e) => setSpa(!spa)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="spa">Spa</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='jacuzzi'
+									checked={jacuzzi}
+									value={jacuzzi}
+									onChange={(e) => setJacuzzi(!jacuzzi)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="jacuzzi">Jacuzzi</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='pool'
+									checked={pool}
+									value={pool}
+									onChange={(e) => setPool(!pool)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="pool">Swimming Pool</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='room_service'
+									checked={room_service}
+									value={room_service}
+									onChange={(e) => setRoomService(!room_service)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="room_service">Room Service</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='fire_place'
+									checked={fire_place}
+									value={fire_place}
+									onChange={(e) => setFirePlace(!fire_place)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="fire_place">Fire Place</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='wifi'
+									checked={wifi}
+									value={wifi}
+									onChange={(e) => setWifi(!wifi)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="wifi">Wifi</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='workspace'
+									checked={workspace}
+									value={workspace}
+									onChange={(e) => setWorkspace(!workspace)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="workspace">Workspace</label>
+							</div>
+							<div>
+								<input
+									type='checkbox'
+									name='water_sports'
+									checked={water_sports}
+									value={water_sports}
+									onChange={(e) => setWaterSports(!water_sports)}
+								>
+								</input>
+								<label className='checkbox' htmlFor="water_sports">Water Activities</label>
+							</div>
 						</div>
 					</div>
-					<button className="submitResortBtn" type="submit">
-						Add Resort
-					</button>
 				</form>
+				<button className="submitResortBtn" type="submit">
+					Add Resort
+				</button>
 				<ImageUploader images={images} setImages={setImages} />
 			</div>
 		</div>
