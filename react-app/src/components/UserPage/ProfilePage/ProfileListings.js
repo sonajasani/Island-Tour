@@ -20,7 +20,7 @@ function ProfileListings() {
 
 
 	return (
-		<div className="profile-listings-page profile-section">
+		<div className="profile-listings-page">
 			<div className='profile-resort-subdiv'>
 				{userResorts.length ? (
 					userResorts.map((resort) => {

@@ -13,6 +13,7 @@ import CreateResort from "./components/Resorts/ResortsForm/CreateResort";
 import SingleResort from "./components/Resorts/SingleResort/SingleResort";
 import EditResort from "./components/Resorts/ResortsForm/EditResort";
 import AllResorts from "./components/Resorts/AllResorts"
+import EditProfile from "./components/UserPage/ProfilePage/EditProfile";
 
 import ProfileRoutes from "./components/UserPage/ProfilePage";
 import PageNotFound from "./components/PageNotFound";
@@ -67,6 +68,10 @@ function App() {
 
         <ProtectedRoute path="/resorts/:resortId/edit" exact={true}>
           <EditResort />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/profile/@me-edit" exact={true}>
+          <EditProfile />
         </ProtectedRoute>
 
         <PageNotFound />
