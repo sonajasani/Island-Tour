@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import User, db
 from ..forms.edit_user_form import EditUserForm
 from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
+from .utils import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__)
 
@@ -38,7 +39,6 @@ def update_user(user_id):
     if user.id == int(user_id):
         form = EditUserForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data, "....................form.data....................")
         
         if form.validate_on_submit():
             # TODO AWS S3 Bucket Upload Start - profile_image_url
@@ -62,7 +62,7 @@ def update_user(user_id):
             db.session.commit()
             return user.to_dict(), 201
 # else:
-    return {'errors': error_messages(form.errors)}, 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 

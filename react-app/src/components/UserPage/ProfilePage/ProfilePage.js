@@ -26,10 +26,10 @@ function ProfilePage({ user }) {
   return (
     <div className="profile-section">
       { user.id !== 1 &&
-      <div className='edit-delete-profile'>
-        <NavLink  className='profile-edit' to='/profile/@me-edit'>
-          <button className='profile-edit-btn'>Edit Profile Info</button>
-        </NavLink>
+        <div className='edit-delete-profile'>
+          <NavLink  className='profile-edit' to='/profile/@me-edit'>
+            <button className='profile-edit-btn'>Edit Profile Info</button>
+          </NavLink>
         <div onClick={() => setToggleDelete(true)} className='profile-delete-btn'>Delete Account
         { toggleDelete && 
         <Modal onClose={() => setToggleDelete(false)}>

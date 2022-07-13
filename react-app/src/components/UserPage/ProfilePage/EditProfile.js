@@ -13,6 +13,7 @@ function EditProfile() {
     const user = useSelector(state => state.session.user);
     const userId = user?.id;
 
+    console.log(user, "....................user...........................")
 
     const [username, setUserName] = useState(user?.username);
     const [email, setEmail] = useState(user?.email);
@@ -23,22 +24,25 @@ function EditProfile() {
     const [last_name, setLName] = useState(user?.last_name);
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 
+    
+    
     useEffect(() => {
         const err = []
         if (username.length <= 3) err.push('Username must be at least 4 characters');
         if (username.length >= 30) err.push('Username must not be greater than 30 characters');
-        if (first_name.length > 20) err.push('First Name must not be greater than 20 characters');
-        if (last_name.length > 20) err.push('Last Name must not be greater than 20 characters');
         if (email.length <= 0 || (!emailRegex.test((email)))) err.push('You must enter a valid email');
-        if (bio.length > 1000) err.push('Bio must not be longer than 100 characters')
+        if (first_name != null && first_name.length > 20) err.push('First Name must not be greater than 20 characters');
+        if (last_name != null && last_name.length > 20) err.push('Last Name must not be greater than 20 characters');
+        if (bio != null && bio.length > 1000) err.push('Bio must not be longer than 100 characters')
 
         setErrors(err);
-    }, [username, email, bio, first_name, last_name])
-
-
+    }, [username, email, first_name, last_name, bio])
+    
     const submitForm = (e) => {
         e.preventDefault();
+
         const err = [];
+
         const formData = new FormData();
         formData.append('username', username);
         formData.append('first_name', first_name);
@@ -46,12 +50,12 @@ function EditProfile() {
         formData.append('email', email);
         formData.append('bio', bio);
         formData.append('photo', photo);
-        console.log(formData, '........................eup............')
-        dispatch(editSingleUser(userId, formData));
-        setTimeout(() => {
-            err.push('Username or email is already in use. Please try a different one.')
-            setErrors(err)
-        }, 1000)
+        
+        if (err.length <= 0) {
+            const data = dispatch(editSingleUser(userId, formData));
+            setErrors(data)
+        }
+       
     }
 
     const onCancel = () => {
