@@ -66,78 +66,87 @@ function EditProfile() {
     return (
         <>
         <div className='edit-user-container'>
-            <h1 className='warning-edit-message'>WARNING: Submitting changes to your user information will require you to validate your user info at the login page...!!</h1>
-            <div className='edit-user-form'>
-                <ul className='edit-user-errors'>
-                    {
-                        errors.length > 0 && errors.map((err, i) => (
-                            <li key={i}>{err}</li>
-                        ))
-                    }
-                </ul>
-                <form className='edit-form-user' onSubmit={submitForm}>
+        { user.id != 1 ?
+            <div>
+                <h1 className='warning-edit-message'>WARNING: Submitting changes to your user information will require you to validate your user info at the login page...!!</h1>
+                <div className='edit-user-form'>
+                    <ul className='edit-user-errors'>
+                        {
+                            errors.length > 0 && errors.map((err, i) => (
+                                <li key={i}>{err}</li>
+                            ))
+                        }
+                    </ul>
+                    <form className='edit-form-user' onSubmit={submitForm}>
 
-                    <label htmlFor='username'>Username</label>
-                    <input
-                    name='username'
-                    type='text'
-                    value={username}
-                    onChange={(e) => setUserName(e.target.value)}
-                    >
-                    </input>
+                        <label htmlFor='username'>Username</label>
+                        <input
+                        name='username'
+                        type='text'
+                        value={username}
+                        onChange={(e) => setUserName(e.target.value)}
+                        >
+                        </input>
 
-                    <label htmlFor='email'>Email</label>
-                    <input
-                    name='email'
-                    type='text'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    >
-                    </input>
+                        <label htmlFor='email'>Email</label>
+                        <input
+                        name='email'
+                        type='text'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        >
+                        </input>
 
-                    <label htmlFor='first_name'>First Name</label>
-                    <input
-                    name='first_name'
-                    type='text'
-                    value={first_name}
-                    onChange={(e) => setFName(e.target.value)}
-                    >
-                    </input>
-                    
-                    <label htmlFor='last_name'>Last Name</label>
-                    <input
-                    name='last_name'
-                    type='text'
-                    value={last_name}
-                    onChange={(e) => setLName(e.target.value)}
-                    >
-                    </input>
+                        <label htmlFor='first_name'>First Name</label>
+                        <input
+                        name='first_name'
+                        type='text'
+                        value={first_name}
+                        onChange={(e) => setFName(e.target.value)}
+                        >
+                        </input>
+                        
+                        <label htmlFor='last_name'>Last Name</label>
+                        <input
+                        name='last_name'
+                        type='text'
+                        value={last_name}
+                        onChange={(e) => setLName(e.target.value)}
+                        >
+                        </input>
 
 
-                    <label htmlFor='for'>Bio</label>
-                    <input
-                    disabled={user?.username == 'Demo'}
-                    type='text'
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    >
-                    </input>
+                        <label htmlFor='for'>Bio</label>
+                        <input
+                        disabled={user?.username == 'Demo'}
+                        type='text'
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        >
+                        </input>
 
-                    <label htmlFor='photo'>Photo</label>
-                    <input 
-                    className='filetype-btn'
-                    placeholder='Banner Url *Optional'
-                    draggable="false"
-                    type="file"
-                    accept="image/png, image/jpeg, image/png, image/gif"
-                    name='banner_url'
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                    >
-                    </input>
-                    <button id='edit-user-btn' type='submit' disabled={errors.length}>Submit Changes</button>
-                    <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
-                </form>
+                        <label htmlFor='photo'>Photo</label>
+                        <input 
+                        className='filetype-btn'
+                        placeholder='Banner Url *Optional'
+                        draggable="false"
+                        type="file"
+                        accept="image/png, image/jpeg, image/png, image/gif"
+                        name='banner_url'
+                        onChange={(e) => setPhoto(e.target.files[0])}
+                        >
+                        </input>
+                        <button id='edit-user-btn' type='submit' disabled={errors.length}>Submit Changes</button>
+                        <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
+                    </form>
+                </div>
             </div>
+            :
+                <div>
+                    <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
+                    <h1>You cannnot edit Demo Account. To test this feature, please Log In as new User.</h1>
+                </div>
+            }
         </div>
         </>
     )

@@ -25,25 +25,36 @@ function ProfilePage({ user }) {
 
   return (
     <div className="profile-section">
-      { user.id !== 1 &&
-        <div className='edit-delete-profile'>
-          <NavLink  className='profile-edit' to='/profile/@me-edit'>
-            <button className='profile-edit-btn'>Edit Profile Info</button>
-          </NavLink>
-        <div onClick={() => setToggleDelete(true)} className='profile-delete-btn'>Delete Account
+      <div className='edit-delete-profile'>
+        <NavLink  className='profile-edit' to='/profile/@me-edit'>
+          <button className='profile-edit-btn'>Edit Profile Info</button>
+        </NavLink>
+      
+        <div onClick={() => setToggleDelete(true)} className='profile-delete-btn'>Delete Account</div>
         { toggleDelete && 
-        <Modal onClose={() => setToggleDelete(false)}>
-        <div className='delete-review-container'> 
-            <form className='delete-review-modal' onSubmit={deleteUser}>
-                <h2 id='delete-confirmation'>Are you sure you want to delete your account with Island Tour?</h2>
-                <button type='submit' className='delete-review-btn'>Delete</button>
-            </form>
+        <div>
+          { user.id !== 1 ?
+            <Modal onClose={() => setToggleDelete(false)}>
+            <div className='delete-review-container'> 
+                <form className='delete-review-modal' onSubmit={deleteUser}>
+                    <h2 id='delete-confirmation'>Are you sure you want to delete your Account with Island Tour?</h2>
+                    <button type='submit' className='delete-review-btn'>Delete</button>
+                </form>
+            </div>
+            </Modal>
+            :
+            <Modal onClose={() => setToggleDelete(false)}>
+            <div className='delete-review-container'> 
+                <form className='delete-review-modal' >
+                    <h2 id='delete-confirmation'>You cannot delete Demo Account. If you want to test this feature, please Log In as new User.</h2>
+                </form>
+            </div>
+            </Modal>
+          }
         </div>
-        </Modal>
         }
-        </div>
       </div>
-     } 
+
       <div className="profile-page">
         <div className="profile-username">
           <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
