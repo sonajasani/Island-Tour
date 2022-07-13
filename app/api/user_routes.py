@@ -38,10 +38,12 @@ def update_user(user_id):
     if user.id == int(user_id):
         form = EditUserForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+        print(form.data, "....................form.data....................")
+        
         if form.validate_on_submit():
             # TODO AWS S3 Bucket Upload Start - profile_image_url
             if request.files:
-                image = request.files["profile_pic_url"]
+                image = request.files["photo"]
                 if not allowed_file(image.filename):
                     return {"errors": "file type not permitted"}, 400
                 image.filename = get_unique_filename(image.filename)

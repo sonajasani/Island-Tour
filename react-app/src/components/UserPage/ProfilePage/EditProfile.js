@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import { editSingleUser, removeSingleUser, logout } from '../../../store/session';
-
+import './EditProfile.css'
 
 
 function EditProfile() {
@@ -16,18 +16,20 @@ function EditProfile() {
 
     const [username, setUserName] = useState(user?.username);
     const [email, setEmail] = useState(user?.email);
-    const [bio, setBio] = useState("");
-    const [photo, setPhoto] = useState("");
+    const [bio, setBio] = useState(user?.bio);
+    const [photo, setPhoto] = useState(user?.photo);
     const [errors, setErrors] = useState([]);
-    const [first_name, setFName] = useState("");
-    const [last_name, setLName] = useState("");
+    const [first_name, setFName] = useState(user?.first_name);
+    const [last_name, setLName] = useState(user?.last_name);
+    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 
     useEffect(() => {
         const err = []
         if (username.length <= 3) err.push('Username must be at least 4 characters');
+        if (username.length >= 30) err.push('Username must not be greater than 30 characters');
         if (first_name.length > 20) err.push('First Name must not be greater than 20 characters');
         if (last_name.length > 20) err.push('Last Name must not be greater than 20 characters');
-        if (email.length <= 0 || !email.includes('@')) err.push('You must enter a valid email');
+        if (email.length <= 0 || (!emailRegex.test((email)))) err.push('You must enter a valid email');
         if (bio.length > 1000) err.push('Bio must not be longer than 100 characters')
 
         setErrors(err);
@@ -52,18 +54,22 @@ function EditProfile() {
         }, 1000)
     }
 
+    const onCancel = () => {
+		history.push(`/profile`)
+	}
+
 
     return (
         <>
         <div className='edit-user-container'>
-            <h2 className='warning-edit-message'>WARNING: Submitting changes to your user information will require you to validate your user info at the login page</h2>
+            <h1 className='warning-edit-message'>WARNING: Submitting changes to your user information will require you to validate your user info at the login page...!!</h1>
             <div className='edit-user-form'>
-            <ul className='edit-user-errors'>
-                {
-                    errors.length > 0 && errors.map((err, i) => (
-                        <li key={i}>{err}</li>
-                    ))
-                }
+                <ul className='edit-user-errors'>
+                    {
+                        errors.length > 0 && errors.map((err, i) => (
+                            <li key={i}>{err}</li>
+                        ))
+                    }
                 </ul>
                 <form className='edit-form-user' onSubmit={submitForm}>
 
@@ -124,7 +130,8 @@ function EditProfile() {
                     onChange={(e) => setPhoto(e.target.files[0])}
                     >
                     </input>
-                    <button id='edit-user-btn' type='submit' disabled={!!errors.length}>Submit Changes</button>
+                    <button id='edit-user-btn' type='submit' disabled={errors.length}>Submit Changes</button>
+                    <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
                 </form>
             </div>
         </div>

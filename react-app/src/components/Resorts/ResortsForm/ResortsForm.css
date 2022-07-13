@@ -68,7 +68,8 @@
 }
 
 .submitResortBtn {
-	margin-top: 10px;
+	
+	margin-top: 40px;
 	background-color: #00509d;
 	color: white;
 	padding: 0.5em;
@@ -79,6 +80,30 @@
 }
 
 .submitResortBtn:hover {
+	background-color: #0473db;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+.create-submitResortBtn {
+	width: 200px;
+	height: 60px;
+	margin-top: 40px;
+	background-color: #00509d;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: 'Open Sans', sans-serif;
+	box-shadow: 0px 5px 10px black;
+}
+
+.create-submitResortBtn:hover {
 	background-color: #0473db;
 	color: white;
 	padding: 0.5em;
@@ -140,4 +165,72 @@
     display: flex;
     align-content: center;
     justify-content: space-evenly;
+}
+
+.imageUploaderBtn-dd{
+	background-color: #05af9b;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: 'Open Sans', sans-serif;
+	box-shadow: 0px 3px 7px #00509d;
+	margin-right: 10px;
+}
+
+
+.imageUploaderBtn-dd:hover {
+	background-color: #0d796c;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.imageUploaderBtn-rmv{
+	background-color: #fa071b;
+	box-shadow: 0px 3px 7px #740808;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.imageUploaderBtn-rmv:hover {
+	background-color: #8b073e;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.imageUploaderBtn-edit{
+	background-color: transparent;
+	color: green;
+	padding-right: 0.5em;
+	border: none;
+	margin-right: 10px;
+	font-weight: 600;
+	font-size: 30px;
+}
+
+.imageUploaderBtn-del{
+	background-color: transparent;
+	color: black;
+	padding-right: 0.5em;
+	border: none;
+	margin-right: 10px;
+	font-weight: 600;
+	font-size: 22px;
+}
+
+.imageUploaderBtn-del:hover{
+	color: red;
+	font-size: 26px;
 }

@@ -29,21 +29,21 @@ const ImageUploader = ({ images, setImages }) => {
 					// write your building UI
 					<div className="upload__image-wrapper">
 						<button
-              className="imageUploaderBtn"
+              className="imageUploaderBtn-dd"
 							style={isDragging ? { color: "red" } : undefined}
 							onClick={onImageUpload}
 							{...dragProps}
 						>
-							Click or Drag and Drop images here
+							Click or Drag & Drop images
 						</button>
 						&nbsp;
-						<button className="imageUploaderBtn" onClick={onImageRemoveAll}>Remove all images</button>
+						<button className="imageUploaderBtn-rmv" onClick={onImageRemoveAll}>Remove all images</button>
 						{imageList.map((image, index) => (
 							<div key={index} className="image-item">
 								<img src={image["data_url"]} alt="" width="100" />
 								<div className="image-item__btn-wrapper">
-									<button className="imageUploaderBtn" onClick={() => onImageUpdate(index)}>Update</button>
-									<button className="imageUploaderBtn" onClick={() => onImageRemove(index)}>Remove</button>
+									<button className="imageUploaderBtn-edit" onClick={() => onImageUpdate(index)}><i class="fa fa-edit"></i></button>
+									<button className="imageUploaderBtn-del" onClick={() => onImageRemove(index)}><i class="fa fa-trash-o"></i></button>
 								</div>
 							</div>
 						))}

@@ -314,12 +314,12 @@ const CreateResort = () => {
 								</input>
 								<label className='checkbox' htmlFor="water_sports">Water Activities</label>
 							</div>
+							<button className="create-submitResortBtn" type="submit">
+								Add Resort
+							</button>
 						</div>
 					</div>
 				</form>
-				<button className="submitResortBtn" type="submit">
-					Add Resort
-				</button>
 				<ImageUploader images={images} setImages={setImages} />
 			</div>
 		</div>

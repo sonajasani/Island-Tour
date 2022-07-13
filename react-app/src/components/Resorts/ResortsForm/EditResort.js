@@ -298,14 +298,14 @@ const EditResort = () => {
 								</input>
 								<label className='checkbox' htmlFor="water_sports">Water Activities</label>
 							</div>
+							<button className="submitResortBtn" type="submit">
+								Edit Resort
+							</button>
+							<button onClick={onCancel} className="cancelResortBtn">Cancel</button>
 						</div>
 					</div>
 				</form>
 				<div className='form-btns'>
-				<button className="submitResortBtn" type="submit">
-					Edit Resort
-				</button>
-				<button onClick={onCancel} className="cancelResortBtn">Cancel</button>
 				</div>
 			</div>
 		</div>

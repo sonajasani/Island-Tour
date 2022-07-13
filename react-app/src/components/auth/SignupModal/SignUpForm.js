@@ -110,7 +110,7 @@ const SignUpForm = ({ setShowSignUpModal }) => {
 						className="authInputBox"
 						type="password"
 						name="repeat_password"
-						placeholder="Repeat Password"
+						placeholder="Confirm Password"
 						onChange={updateRepeatPassword}
 						value={repeatPassword}
 						required={true}
