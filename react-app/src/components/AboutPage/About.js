@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import developerpic from '../../images/developerpic.png'
+import developerpic2 from '../../images/developerpic2.png'
 import './About.css'
 
 const About = () =>{
@@ -21,7 +21,7 @@ const About = () =>{
                     </div>
                 </div>
                 <div classname='img-div'>
-                    <img src={developerpic} alt="" className='developer-pic-div'></img>
+                    <img src={developerpic2} alt="" className='developer-pic-div'></img>
                 </div>
             </div>
             <div className="project-info">
