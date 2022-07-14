@@ -56,6 +56,7 @@ function EditProfile() {
             setErrors(data)
         }
        
+       
     }
 
     const onCancel = () => {
@@ -79,7 +80,7 @@ function EditProfile() {
                     </ul>
                     <form className='edit-form-user' onSubmit={submitForm}>
 
-                        <label htmlFor='username'>Username</label>
+                        <label htmlFor='username'>Username**</label>
                         <input
                         name='username'
                         type='text'
@@ -88,7 +89,7 @@ function EditProfile() {
                         >
                         </input>
 
-                        <label htmlFor='email'>Email</label>
+                        <label htmlFor='email'>Email**</label>
                         <input
                         name='email'
                         type='text'
@@ -138,13 +139,14 @@ function EditProfile() {
                         </input>
                         <button id='edit-user-btn' type='submit' disabled={errors.length}>Submit Changes</button>
                         <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
+                        <p className="req-field">** fields are required.</p>
                     </form>
                 </div>
             </div>
             :
-                <div>
+                <div className='no-edit-div'>
                     <button id='edit-cancel-btn' onClick={onCancel} >Cancel</button>
-                    <h1>You cannnot edit Demo Account. To test this feature, please Log In as new User.</h1>
+                    <h1>You can not edit Demo Account. To test this feature, please Log In as new User.</h1>
                 </div>
             }
         </div>

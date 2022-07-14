@@ -9,6 +9,7 @@ import DeleteResort from "./DeleteResort";
 import PageNotFound from "../../PageNotFound";
 import { getResorts } from "../../../store/resorts";
 import ImageSlider from'../../Tools/ImageSlider'
+import comingSoon from '../../../images/comingSoon.jpg'
 
 import "./SingleResort.css";
 
@@ -17,7 +18,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	const dispatch = useDispatch();
 	const { resortId } = useParams();
 	const [disable, setDisable] = useState(true);
-	const resort = useSelector((state) => state?.resort[resortId]);
+	const resort = useSelector((state) =>  state?.resort[resortId]);
 	const user = useSelector((state) => state?.session.user);
 
 	const reviewsArr = resort?.reviews;
@@ -55,9 +56,14 @@ const SingleResort = ({ setLoaded, loaded }) => {
 						<h1>{resort?.name}</h1>
 					</div>
 				</div>
-				<div className="imagesResort">
-					<ImageSlider resort={resort}/>
-				</div>
+				{resort?.images.length == 0 ?
+					<img src={comingSoon} alt="" className="imagesResort-spare" ></img>
+					:
+					<div className="imagesResort">
+						<ImageSlider resort={resort}/>
+					</div>
+					
+				}
 				<div className="divisionSpace">
 					<div className="divisionLeft">
 						<h2>

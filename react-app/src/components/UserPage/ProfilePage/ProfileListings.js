@@ -5,18 +5,21 @@ import { getResorts } from "../../../store/resorts";
 import { useDispatch } from "react-redux";
 import DeleteResort from "../../Resorts/SingleResort/DeleteResort";
 import './ProfileListing.css'
+import comingSoon from '../../../images/comingSoon.jpg'
 
 function ProfileListings() {
 	const user = useSelector((state) => state.session.user);
+
+	useEffect(() => {
+	  dispatch(getResorts())
+	})
+	
 	const resorts = useSelector((state) => state.resort);
 	const resortsArr = Object.values(resorts);
 	const userResorts = resortsArr.filter((resort) => user.id === resort.host.id);
   const dispatch = useDispatch();
-	console.log(userResorts, "....................user resorts.....................");
+	
 
-//   useEffect(() => {
-//     dispatch(getResorts())
-//   })
 
 
 	return (
@@ -34,7 +37,11 @@ function ProfileListings() {
 								>
 									<div className="resortDetailBody">
 										<h3>{resort?.name}</h3>
-										<img className="listingResortImage" src={resort?.images[0]?.url} />
+										{resort?.images.length == 0 ?
+											<img src={comingSoon} alt="" className="listingResortImage" ></img>
+											: 
+											<img className="listingResortImage" src={resort?.images[0]?.url} />
+										}
 									</div>
 								</Link>
 								<div className="resort-btns">

@@ -57,7 +57,12 @@ function ProfilePage({ user }) {
 
       <div className="profile-page">
         <div className="profile-username">
-          <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
+          {/* {{first_name} == null && {last_name} == null ? */}
+            <h3>{username}</h3>
+          {/* //   :
+          //   <h3>{first_name} {last_name}</h3>
+          // }
+           */}
           <img src={photo ? photo : profilePicture} alt="avatar"/>
           <h3 className='profile-page-bio'>{bio}</h3>
         </div>

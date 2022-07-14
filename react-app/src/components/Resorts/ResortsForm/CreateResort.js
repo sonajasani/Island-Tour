@@ -57,7 +57,7 @@ const CreateResort = () => {
 		if (description.length < 10)
 			errors.push("Description must be more than 10 characters.");
 		if (price <= 10) errors.push("Price must be greater than 10.");
-		if (images.length < 4) errors.push('Please submit atleast four photos')
+		if (images.length > 10) errors.push('You can add maximum 10 images')
 
 		setValidationErrors(errors);
 	}, [
@@ -117,6 +117,7 @@ const CreateResort = () => {
 			</div>
 			<div className="formGroup">
 				<form onSubmit={onSubmit}>
+					<h4 id='image-id-h4'>Note: You cannot add more than 10 images at a time.</h4>
 					{hasSubmitted && validationErrors.length > 0 && (
 						<div>
 							{validationErrors.map((error, idx) => (

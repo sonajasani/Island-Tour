@@ -5,7 +5,7 @@ class Image(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   resort_id = db.Column(db.Integer, db.ForeignKey('resorts.id'), nullable=False)
-  url = db.Column(db.String(255), nullable=False)
+  url = db.Column(db.String(255))
 
 
   # Relationships

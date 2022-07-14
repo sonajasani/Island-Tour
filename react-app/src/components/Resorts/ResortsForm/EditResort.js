@@ -6,6 +6,7 @@ import { modifyResort, uploadImage, updateImage, deleteImg, getResort } from "..
 import ImageUploader from "../../Tools/ImageUploader";
 import ImageUploading from "react-images-uploading";
 import './ResortsForm.css'
+import resortImg from '../../../images/resortImg.jpg'
 
 const EditResort = () => {
 	const history = useHistory();
@@ -35,7 +36,6 @@ const EditResort = () => {
     const [water_sports, setWaterSports] = useState(resort?.water_sports);
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [images, setImages] = useState([]);
-	// const [image, setImage] = useState();
 	const [previousPk, setPreviousPk] = useState()
 	const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -133,17 +133,24 @@ const EditResort = () => {
 			<div className="formPage">
 				<div className="leftSideImage">
 					<h2>Edit your Resort !</h2>
-					{imageArr && imageArr.map((image, idx) =>(
-						<div key = {idx}>
-							<img src={image.url} width="200px" />
-							<button 
-								onClick={onDeleteImage(image.id)}
-							>Delete</button>
+					{ resort.images.length == 0 ?
+						<img src={resortImg} alt="" />
+					:
+						<div>
+							{imageArr && imageArr.map((image, idx) =>(
+								<div key = {idx}>
+									<img src={image.url} width="200px" />
+									<button 
+										onClick={onDeleteImage(image.id)}
+									>Delete</button>
+								</div>
+							))}
 						</div>
-					))}
-				</div>
+					}
+					</div>
 				<div className="formGroup">
 					<form onSubmit={onSubmit}>
+					<h4 id='image-id-h4'>Note: You cannot add more than 10 images at a time.</h4>
 						{hasSubmitted && validationErrors.length > 0 && (
 							<div>
 								{validationErrors.map((error, idx) => (

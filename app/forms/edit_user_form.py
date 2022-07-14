@@ -15,6 +15,9 @@ def user_exists(form, field):
         pass
     else:
         raise ValidationError('Email address is already in use.')
+        # print("Email address is already in use................................")
+    # if user:
+    #     raise ValidationError('Email address is already in use.')
 
 
 def username_exists(form, field):
@@ -25,6 +28,9 @@ def username_exists(form, field):
         pass
     else:
         raise ValidationError('Username is already in use.')
+        # print("Username is already in use........................................")
+    # if user:
+    #     raise ValidationError('Username is already in use.')
 
 
 class EditUserForm(FlaskForm):
