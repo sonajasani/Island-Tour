@@ -75,11 +75,13 @@ def update_user(user_id):
 
 
 
+
 @user_routes.route('/delete/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
 
     user = User.query.get(user_id)
     if user == current_user:
+        print(user, "................user in del user...............")
         db.session.delete(user)
         db.session.commit()
     return user.to_dict()

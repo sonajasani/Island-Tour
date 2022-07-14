@@ -18,9 +18,9 @@ class User(db.Model, UserMixin):
     photo = db.Column(db.String(255))
 
     # Relationships
-    resorts = db.relationship("Resort", back_populates="users")
-    bookings = db.relationship("Booking", back_populates="users")
-    reviews = db.relationship("Review", back_populates="users")
+    resorts = db.relationship("Resort", back_populates="users", cascade="all, delete" )
+    bookings = db.relationship("Booking", back_populates="users", cascade="all, delete")
+    reviews = db.relationship("Review", back_populates="users", cascade="all, delete")
 
     @property
     def password(self):

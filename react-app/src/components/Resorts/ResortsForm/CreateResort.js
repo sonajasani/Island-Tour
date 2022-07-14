@@ -52,11 +52,15 @@ const CreateResort = () => {
 	useEffect(() => {
 		const errors = [];
 		if (name.length < 5) errors.push("Name must be at least 5 characters.");
-		if (island.length < 2) errors.push("Island name must be at least 5 characters.");
+		if (name.length > 50) errors.push("Name must be within 50 characters.");
+		if (island.length < 3) errors.push("Island name must be at least 3 characters.");
+		if (island.length > 50) errors.push("Island name must be within 50 characters.");
         if (country.length < 3) errors.push("Country name must be at least 3 characters.");
-		if (description.length < 10)
-			errors.push("Description must be more than 10 characters.");
+		if (country.length >50 ) errors.push("Country name must be within 50 characters.")
+		if (description.length < 10) errors.push("Description must be more than 10 characters.");
+		if (description.length > 500) errors.push("Description must not be more than 500 characters.");
 		if (price <= 10) errors.push("Price must be greater than 10.");
+		if (price >= 9000) errors.push("Price must be less than 9000.");
 		if (images.length > 10) errors.push('You can add maximum 10 images')
 
 		setValidationErrors(errors);
