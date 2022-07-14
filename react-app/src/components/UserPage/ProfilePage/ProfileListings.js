@@ -16,7 +16,7 @@ function ProfileListings() {
 	
 	const resorts = useSelector((state) => state.resort);
 	const resortsArr = Object.values(resorts);
-	const userResorts = resortsArr.filter((resort) => user.id === resort.host.id);
+	const userResorts = resortsArr?.filter((resort) => user?.id === resort.host?.id);
   const dispatch = useDispatch();
 	
 
