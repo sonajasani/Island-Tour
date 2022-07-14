@@ -49,19 +49,19 @@ const About = () =>{
                 <div classname='other-project-div'>
                     <h2>Other Projects:</h2>
                     <h4>
-                        <NavLink to='http://music-storm-7.herokuapp.com/' id='music-storm-id'>
+                        <a href='http://music-storm-7.herokuapp.com/' id='music-storm-id'>
                             MusicStorm
-                        </NavLink>
+                        </a>
                     </h4>
                     <h4>
-                        <NavLink to='https://who-dis-app.herokuapp.com/' id='who-dis-id'>
+                        <a href='https://who-dis-app.herokuapp.com/' id='who-dis-id'>
                             WhoDis?
-                        </NavLink>
+                        </a>
                     </h4>
                     <h4>
-                        <NavLink to='https://aa-goodbois.herokuapp.com/' id='goodbois-id'>
+                        <a href='https://aa-goodbois.herokuapp.com/' id='goodbois-id'>
                             Goodbois
-                        </NavLink>
+                        </a>
                     </h4>
                 </div>
             </div>
