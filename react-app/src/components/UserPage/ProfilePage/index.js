@@ -25,12 +25,12 @@ function ProfileRoutes() {
           <ProfileListings user={user} myResorts={myResorts} />
         </Route>
         <Route path='/profile/@my-reservations' >
-          { user.booking ?
+          { myBookings != 0 ?
             <div className="my-bookings-container">
               {myBookings?.map( booking => (
-            <BookingCard booking={booking} key={booking.id}/>
+                <BookingCard booking={booking} key={booking.id}/>
             ))}
-          </div>
+            </div>
           : 
             <h1 className='booking-div'>Currently you have zero bookings...!!</h1>
           }

@@ -18,7 +18,7 @@ const Calendar = () => {
     const { resortId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const resort = useSelector(state => state.resort[resortId]);
+    const resort = useSelector(state => state.resort.booking ? state.resort : state.resort[resortId]);
     const user = useSelector(state => state.session.user);
     const [modal, setModal] = useState(false)
     const [booked, setBooked] = useState("")

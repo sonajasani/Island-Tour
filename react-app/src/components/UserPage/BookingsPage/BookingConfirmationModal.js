@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { useHistory } from "react-router-dom";
+import comingSoon from '../../../images/comingSoon.jpg'
 
 import './Calendar.css'
 import { authenticate } from "../../../store/session";
@@ -35,16 +36,19 @@ const BookingConfirmationModal = ({ booking, setModal }) => {
 			<h2 className="booking-blurb">
 			  Name: {user?.username}
 			</h2>
-
-			<img
-				className="resort-image"
-				src={resort?.images[0].url}
-				alt={`${resort?.images[0].id}`}
-			/>
+			{resort?.images.length == 0 ?
+					<img src={comingSoon} alt="" className="imagesResort-spare" ></img>
+					:
+					<img
+						className="resort-image"
+						src={resort?.images[0]?.url}
+						alt={`${resort?.images[0]?.id}`}
+					/>
+			}
 			<div className="booking-details">
 				<div className='booking-details-dates'>
-					<h3>Check-in Date: {booking.start_date.slice(0, 16)}</h3>
-					<h3>Check-out Date: {booking.end_date.slice(0, 16)}</h3>
+					<h3>Check-in Date: {booking?.start_date.slice(0, 16)}</h3>
+					<h3>Check-out Date: {booking?.end_date.slice(0, 16)}</h3>
 				</div>
 				<h3>
 					Location: #{resort?.island}, {resort?.country}
