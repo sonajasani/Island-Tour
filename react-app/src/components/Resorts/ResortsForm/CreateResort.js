@@ -51,7 +51,7 @@ const CreateResort = () => {
 
 	useEffect(() => {
 		const errors = [];
-		if (name.length < 5) errors.push("Must provide a valid name.");
+		if (name.length < 5) errors.push("Name must be at least 5 characters.");
 		if (island.length < 2) errors.push("Island name must be at least 5 characters.");
         if (country.length < 3) errors.push("Country name must be at least 3 characters.");
 		if (description.length < 10)

@@ -102,16 +102,32 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 
 export const editSingleUser = (userId, data) => async dispatch => {
+	
 	const res = await fetch(`/api/users/edit/${userId}`, {
 	  method: 'PUT',
+	  headers: {
+		"Content-Type": "application/json",
+	},
 	  body: data
 	});
 	if (res.ok) {
-	  const user = await res.json();
-	  dispatch(editUser(user));
-	  return user;
+		const user = await res.json();
+		dispatch(editUser(user));
+		return user;
+	} else if (res.status < 500) {
+		const result = await res.json();
+		if (result.errors) {
+			return result.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
 	}
+	console.log(res, "...............inside thunk..............")
 }
+
+
+
+
 
 
 export const removeSingleUser = (userId) => async dispatch => {

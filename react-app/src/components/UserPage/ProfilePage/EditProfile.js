@@ -36,13 +36,14 @@ function EditProfile() {
         if (bio != null && bio.length > 1000) err.push('Bio must not be longer than 100 characters')
 
         setErrors(err);
+
     }, [username, email, first_name, last_name, bio])
     
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault();
 
-        const err = [];
-
+        const errors = []
+        
         const formData = new FormData();
         formData.append('username', username);
         formData.append('first_name', first_name);
@@ -51,9 +52,12 @@ function EditProfile() {
         formData.append('bio', bio);
         formData.append('photo', photo);
         
-        if (err.length <= 0) {
-            const data = dispatch(editSingleUser(userId, formData));
-            setErrors(data)
+        if (errors.length <=0){
+            const data = await dispatch(editSingleUser(userId, formData))
+            // console.log(data, "............data...............")
+            if (data) {
+                setErrors(data)
+            }
         }
        
        

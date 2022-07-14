@@ -33,6 +33,9 @@ const EditReview = ({reviewProp, setEditOpen}) => {
     if (rating < 1 || rating > 5) {
       return alert('Please submit a rating between 1 to 5 stars')
     }
+    if (review.length > 1000) {
+      return alert('Review cannot be greater than 1000 characters')
+    }
 
     setEditOpen(false)
 

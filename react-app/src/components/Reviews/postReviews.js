@@ -24,6 +24,7 @@ const ReviewForm = () => {
  useEffect(() => {
     const err = [];
     if (rating < 1 || rating > 5) err.push('Please submit a rating between 1 to 5 stars')
+    if (review.length > 1000) err.push('Review cannot be greater than 1000 characters')
     setError(err);
   },[review, rating])
 
