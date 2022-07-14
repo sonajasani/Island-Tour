@@ -41,6 +41,9 @@ const Navigation = ({resorts, setFiltered }) => {
           <span>Island Tour</span>
         </NavLink>
       </div>
+      <NavLink to='/@about-developer' exact={true}>
+        <h3 className='nav-about-div'>About</h3>
+      </NavLink>
       {sessionLinks}
     </div>
   );

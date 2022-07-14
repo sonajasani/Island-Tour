@@ -3,6 +3,7 @@ const GET_RESORT = "/resorts/getResort";
 const CREATE_RESORT = "/resorts/create";
 const EDIT_RESORT = "/resorts/edit";
 const DELETE_RESORT= "/resorts/delete";
+const DELETE_IMAGE = 'delete/image';
 
 const loadResorts = (resorts) => ({
 	type: GET_ALL_RESORTS,
@@ -28,6 +29,11 @@ const deleteResort = (resort) => ({
 	type: DELETE_RESORT,
 	resort,
 });
+
+const deleteImage = (image) => ({
+	type: DELETE_IMAGE,
+	image
+})
 
 export const getResorts = () => async (dispatch) => {
 	const response = await fetch("/api/resorts");
@@ -114,13 +120,14 @@ export const eraseResort = (id) => async (dispatch) => {
 
 //AWS upload images
 export const uploadImage = (imageData) => async dispatch => {
-	const { url, resort_id, image } = imageData;
+	const { url, resort_id, image} = imageData;
 
 	const formData = new FormData();
 	formData.append("url", url);
 	formData.append("resort_id", resort_id);
 	formData.append("image", image);
 
+	
 	const res = await fetch('/api/images/upload', {
 		method: "POST",
 		body: formData,
@@ -129,8 +136,42 @@ export const uploadImage = (imageData) => async dispatch => {
 	if (res.ok) {
 		return await res.json();
 	}
-
 }
+
+export const updateImage = (imageData, imageId) => async dispatch => {
+	const { url, resort_id, image} = imageData;
+
+	const formData = new FormData();
+	formData.append("url", url);
+	formData.append("resort_id", resort_id);
+	formData.append("image", image);
+
+	
+	const res = await fetch(`/api/images/update/${imageId}`, {
+		method: "PUT",
+		body: formData,
+	});
+
+	if (res.ok) {
+		return await res.json();
+	}
+}
+
+
+export const deleteImg = (imageId) => async dispatch => {
+	const res = await fetch (`/api/images/${imageId}`, {
+		method: "DELETE",
+	});
+
+	console.log("...........in delete image thunk.......")
+	if(res.ok){
+	const confirmation = await res.json();
+	  const removedId = confirmation.id
+	  dispatch(deleteImage(imageId))
+	  return removedId;
+	}
+}
+
 
 const resortsReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -148,6 +189,10 @@ const resortsReducer = (state = {}, action) => {
 			const newState = { ...state };
 			delete newState[action.resort.id];
 			return newState;
+		case DELETE_IMAGE:
+			const newStates = { ...state, action};
+			// delete newStates[action.image.id];
+			return newStates;
 		default:
 			return state;
 	}

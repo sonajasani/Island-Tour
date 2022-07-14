@@ -12,11 +12,11 @@ function ProfileListings() {
 	const resortsArr = Object.values(resorts);
 	const userResorts = resortsArr.filter((resort) => user.id === resort.host.id);
   const dispatch = useDispatch();
-	console.log(userResorts);
+	console.log(userResorts, "....................user resorts.....................");
 
-  useEffect(() => {
-    dispatch(getResorts())
-  })
+//   useEffect(() => {
+//     dispatch(getResorts())
+//   })
 
 
 	return (

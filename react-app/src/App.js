@@ -14,6 +14,7 @@ import SingleResort from "./components/Resorts/SingleResort/SingleResort";
 import EditResort from "./components/Resorts/ResortsForm/EditResort";
 import AllResorts from "./components/Resorts/AllResorts"
 import EditProfile from "./components/UserPage/ProfilePage/EditProfile";
+import About from "./components/AboutPage/About"
 
 import ProfileRoutes from "./components/UserPage/ProfilePage";
 import PageNotFound from "./components/PageNotFound";
@@ -48,6 +49,10 @@ function App() {
 
         <Route path="/" exact={true}>
           <UserViewPage />
+        </Route>
+
+        <Route path="/@about-developer" exact={true}>
+          <About />
         </Route>
 
         <ProtectedRoute path={["/profile", "/profile/@my-resorts", "/profile/@my-reservations" ]} exact={true} >

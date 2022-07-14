@@ -27,14 +27,16 @@ const SplashPage = () => {
 							</NavLink>
 						</div>
 					:
-						<div className="splash-text-content">
-							<h1>Island Tour...</h1>
-							<h2 className="splash-sub-text">
-								<div>Good vibes happen on the tides..</div>
-								<div>The tan will fade but the memories will last Forever..!!</div>
-							</h2>
-							<div className="splash-demo">
-								<Demo />
+						<div className='main-splash-div'>
+							<div className="splash-text-content">
+								<h1>Island Tour...</h1>
+								<h2 className="splash-sub-text">
+									<div>Good vibes happen on the tides..</div>
+									<div>The tan will fade but the memories will last Forever..!!</div>
+								</h2>
+								<div className="splash-demo">
+									<Demo />
+								</div>
 							</div>
 						</div>
 					}
