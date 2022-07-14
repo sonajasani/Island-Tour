@@ -140,9 +140,9 @@ const EditResort = () => {
 							{imageArr && imageArr.map((image, idx) =>(
 								<div key = {idx}>
 									<img src={image.url} width="200px" />
-									<button 
+									<button className="imageUploaderBtn-del"
 										onClick={onDeleteImage(image.id)}
-									>Delete</button>
+									><i class="fa fa-trash-o"></i></button>
 								</div>
 							))}
 						</div>
