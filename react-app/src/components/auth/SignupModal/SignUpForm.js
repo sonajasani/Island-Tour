@@ -24,6 +24,7 @@ const SignUpForm = ({ setShowSignUpModal }) => {
 		if (!emailRegex.test((email))) errors.push("Must provide a valid email.");
 		if (password.length === 0)
 			errors.push("Must provide a value for the password.");
+		if (password.length < 8) errors.push("Must provide atleast 8 characters password");
 		if (repeatPassword.length === 0) errors.push("Must repeat the password.");
 		if (repeatPassword !== password) errors.push("Passwords do not match.");
 		setErrors(errors);

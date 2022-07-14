@@ -11,8 +11,8 @@ function ProfileRoutes() {
   const user = useSelector(state => state.session.user);
   const bookings = Object.values(useSelector(state => state.booking));
   const resorts = Object.values(useSelector(state => state.resort));
-  const myBookings = bookings.filter(booking => user.bookings.includes(booking.id))
-  const myResorts = resorts.filter( resort => user.resorts.includes(resort.id))
+  const myBookings = bookings?.filter(booking => user?.bookings?.includes(booking.id))
+  const myResorts = resorts?.filter( resort => user?.resorts?.includes(resort.id))
 
 
   return (
@@ -25,11 +25,15 @@ function ProfileRoutes() {
           <ProfileListings user={user} myResorts={myResorts} />
         </Route>
         <Route path='/profile/@my-reservations' >
-          <div className="my-bookings-container">
-            {myBookings?.map( booking => (
-              <BookingCard booking={booking} key={booking.id}/>
+          { user.booking ?
+            <div className="my-bookings-container">
+              {myBookings?.map( booking => (
+            <BookingCard booking={booking} key={booking.id}/>
             ))}
           </div>
+          : 
+            <h1 className='booking-div'>Currently you have zero bookings...!!</h1>
+          }
         </Route>
       </Switch>
 

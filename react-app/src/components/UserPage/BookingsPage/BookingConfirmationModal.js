@@ -9,7 +9,7 @@ import { authenticate } from "../../../store/session";
 const BookingConfirmationModal = ({ booking, setModal }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const resort = useSelector((state) => state.resort[booking?.resort_id]);
+	const resort = useSelector((state) => state.resort.booking ? state.resort : state.resort[booking?.resort_id]);
 	const user = useSelector((state) => state.session.user);
 
 	const start = new Date(booking?.start_date);
@@ -38,8 +38,8 @@ const BookingConfirmationModal = ({ booking, setModal }) => {
 
 			<img
 				className="resort-image"
-				src={resort.images[0].url}
-				alt={`${resort.images[0].id}`}
+				src={resort?.images[0].url}
+				alt={`${resort?.images[0].id}`}
 			/>
 			<div className="booking-details">
 				<div className='booking-details-dates'>
