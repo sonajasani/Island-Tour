@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteBooking } from '../../../store/bookings';
 import {Modal} from '../../../context/Modal'
+import comingSoon from '../../../images/comingSoon.jpg'
 
 const BookingModal = ({ setModal, booking, resort }) => {
     const dispatch = useDispatch();
@@ -29,8 +30,12 @@ const BookingModal = ({ setModal, booking, resort }) => {
     return (
         <div className="booking-modal">
             {/* <GrClose className="booking-cancel-icons" onClick={() => setModal(false)} /> */}
-            <h2>{resort.name}</h2>
-            <img className='booking-image' src={image?.url} alt="home" />
+            <h2>{resort?.name}</h2>
+            {resort?.images.length == 0 ?
+					<img src={comingSoon} alt="" className="imagesResort-spare" ></img>
+					:
+                    <img className='booking-image' src={image?.url} alt="home" />
+            }
             <h4>Your Reservation:</h4>
             <div className='booking-section'>
                 <p>Check-in Date: {start_date.slice(0, 16)}</p>

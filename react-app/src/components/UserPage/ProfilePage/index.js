@@ -9,26 +9,30 @@ import BookingCard from '../BookingsPage/BookingCard';
 
 function ProfileRoutes() {
   const user = useSelector(state => state.session.user);
-  const bookings = Object.values(useSelector(state => state.booking));
+
+  const bookings = Object.values(useSelector(state => state.booking ));
+  console.log(bookings, "..................booking...............................")
   const resorts = Object.values(useSelector(state => state.resort));
-  const myBookings = bookings?.filter(booking => user?.bookings?.includes(booking.id))
-  const myResorts = resorts?.filter( resort => user?.resorts?.includes(resort.id))
+  const myBookings = bookings.filter(booking => user.bookings?.includes(booking.id))
+  console.log(myBookings, "..................bookings in booking................")
+  const myResorts = resorts?.filter( resort => user.resorts?.includes(resort.id))
+  
 
 
   return (
     <>
       <Switch>
         <Route path='/profile' exact ={true}>
-          <ProfilePage user={user} myBookings={myBookings}/>
+          <ProfilePage user={user}/>
         </Route>
         <Route path='/profile/@my-resorts' >
           <ProfileListings user={user} myResorts={myResorts} />
         </Route>
         <Route path='/profile/@my-reservations' >
-          { myBookings != 0 ?
+          { myBookings?.length != 0 ?
             <div className="my-bookings-container">
               {myBookings?.map( booking => (
-                <BookingCard booking={booking} key={booking.id}/>
+                <BookingCard booking={booking} key={booking?.id}/>
             ))}
             </div>
           : 
