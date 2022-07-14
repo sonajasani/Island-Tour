@@ -103,13 +103,15 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 export const editSingleUser = (userId, data) => async dispatch => {
 	
+	console.log(data, "............data..................")
 	const res = await fetch(`/api/users/edit/${userId}`, {
 	  method: 'PUT',
 	  headers: {
 		"Content-Type": "application/json",
-	},
+		},
 	  body: data
 	});
+	
 	if (res.ok) {
 		const user = await res.json();
 		dispatch(editUser(user));
@@ -122,7 +124,6 @@ export const editSingleUser = (userId, data) => async dispatch => {
 	} else {
 		return ["An error occurred. Please try again."];
 	}
-	console.log(res, "...............inside thunk..............")
 }
 
 
@@ -161,7 +162,7 @@ export default function reducer(state = initialState, action) {
 			user = action.payload
 			newState[user.id] = user;
 			return newState
-			case (REMOVE_USER):
+		case (REMOVE_USER):
 			newState = {
 				...state,
 			};

@@ -13,7 +13,6 @@ function EditProfile() {
     const user = useSelector(state => state.session.user);
     const userId = user?.id;
 
-    console.log(user, "....................user...........................")
 
     const [username, setUserName] = useState(user?.username);
     const [email, setEmail] = useState(user?.email);
@@ -23,7 +22,7 @@ function EditProfile() {
     const [first_name, setFName] = useState(user?.first_name);
     const [last_name, setLName] = useState(user?.last_name);
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-
+    const [hasSubmitted, setHasSubmitted] = useState(false);
     
     
     useEffect(() => {
@@ -41,26 +40,26 @@ function EditProfile() {
     
     const submitForm = async (e) => {
         e.preventDefault();
+        
+        setHasSubmitted(true);
 
-        const errors = []
-        
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('first_name', first_name);
-        formData.append('last_name', last_name);
-        formData.append('email', email);
-        formData.append('bio', bio);
-        formData.append('photo', photo);
-        
-        if (errors.length <=0){
-            const data = await dispatch(editSingleUser(userId, formData))
-            // console.log(data, "............data...............")
-            if (data) {
-                setErrors(data)
-            }
+        const formData = {
+            username, 
+            email,
+            first_name,
+            last_name,
+            bio,
+            photo  
         }
-       
-       
+
+        if (errors.length <=0){
+            const data = await dispatch(editSingleUser(userId, formData));
+			console.log(data);
+			if (data) {
+				setErrors(data);
+			}
+		}
+        
     }
 
     const onCancel = () => {
