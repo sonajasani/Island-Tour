@@ -126,7 +126,9 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Contact & Acknowledgements
 
-- Sona Jasani - [GitHub](https://github.com/sonajasani)
+- Sona Jasani 
+-[GitHub](https://github.com/sonajasani)
+-[LinkedIn](https://www.linkedin.com/in/sona-jasani-3b3540194/)
 
 - Project Link: [https://github.com/sonajasani/Island-Tour](https://github.com/sonajasani/Island-Tour)
 
