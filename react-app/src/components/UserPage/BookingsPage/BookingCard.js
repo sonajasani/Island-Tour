@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
 import { Modal } from "../../../context/Modal";
+import comingSoon from '../../../images/comingSoon.jpg'
 
 import BookingModal from "./BookingModal";
 import './BookingCard.css'
@@ -25,7 +26,11 @@ function BookingCard({ booking }) {
   return (
     <>
       <div className="booking-card" onClick={() => setModal(true)}>
+        {resort.images.length == 0 ?
+        <img src={comingSoon} alt="" className="imagesResort-spare" ></img>
+        :
         <img src={resort.images[0].url} alt="booking card"></img>
+        }
         <div className="booking-card-info">
           <p className="title">{name}</p>
           <p className="bold">Resort Owner: {host.first_name ? `${host.first_name} ${host.last_name}` : host.username} </p>
