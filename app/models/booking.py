@@ -18,6 +18,7 @@ class Booking(db.Model):
         return {
             "id": self.id,
             "resort_id": self.resort_id,
+            "user_id":self.user_id,
             "user": self.users.to_dict(),
             "start_date": self.start_date,
             "end_date": self.end_date
