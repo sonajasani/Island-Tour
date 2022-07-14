@@ -40,8 +40,8 @@ const BookingModal = ({ setModal, booking, resort }) => {
             <div className='booking-section'>
                 <p>Check-in Date: {start_date.slice(0, 16)}</p>
                 <p>Check-out Date:{end_date.slice(0, 16)}</p>
-                <p>Location: {resort.island}, {resort.country}, {resort.continent}</p>
-                <p>Total: ${numOfDays * resort.price}</p>
+                <p>Location: {resort?.island}, {resort?.country}, {resort?.continent}</p>
+                <p>Total: ${numOfDays * resort?.price}</p>
             </div>
             {/* <button className='booking-cancel-btn' onClick={(e) => deleteHandler(e, id)}>Cancel Reservation</button> */}
             <div className='reservation-delete-button'>

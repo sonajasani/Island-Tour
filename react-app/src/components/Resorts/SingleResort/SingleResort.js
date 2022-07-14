@@ -18,7 +18,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	const dispatch = useDispatch();
 	const { resortId } = useParams();
 	const [disable, setDisable] = useState(true);
-	const resort = useSelector((state) =>  state?.resort[resortId]);
+	const resort = useSelector((state) => state.resort.images ? state.resort : state?.resort[resortId]);
 	const user = useSelector((state) => state?.session.user);
 
 	const reviewsArr = resort?.reviews;

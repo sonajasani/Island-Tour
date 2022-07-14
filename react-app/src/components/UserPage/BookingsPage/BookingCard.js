@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
 import { Modal } from "../../../context/Modal";
+import {getBookings} from "../../../store/bookings"
 
 import BookingModal from "./BookingModal";
 import './BookingCard.css'
@@ -9,13 +10,17 @@ import comingSoon from '../../../images/comingSoon.jpg'
 
 function BookingCard({ booking }) {
   const [modal, setModal] = useState(false)
+  const dispatch = useDispatch();
 
   const { resort_id, end_date, start_date } = booking;
   const resort = useSelector(state => state.resort.bookings ? state.resort : state.resort[resort_id])
 
-
   const { name, island, country, host } = resort;
 
+
+  useEffect(() => {
+    dispatch(getBookings())
+  },[])
   // useEffect(()=>{
   //   let modalDiv= document.body.getElementsByClassName("booking-modal")[0]
   //   if(modalDiv){
