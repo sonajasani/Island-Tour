@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { modifyResort, uploadImage, updateImage, deleteImg, getResort } from "../../../store/resorts";
+import { modifyResort, uploadImage, updateImage, deleteImg, getResort, getResorts } from "../../../store/resorts";
 import ImageUploader from "../../Tools/ImageUploader";
 import ImageUploading from "react-images-uploading";
 import './ResortsForm.css'
@@ -52,23 +52,29 @@ const EditResort = () => {
 	};
 
 
-	const editImages = (image, resort_id) => {
-		const imageData = {
-			image: image,
-			url: image.filename,
-			resort_id: resort_id,
-		}
-		dispatch(updateImage(imageData, image.id));
-	};
+	// const editImages = (image, resort_id) => {
+	// 	const imageData = {
+	// 		image: image,
+	// 		url: image.filename,
+	// 		resort_id: resort_id,
+	// 	}
+	// 	dispatch(updateImage(imageData, image.id));
+	// };
 
 	useEffect(() => {
 		const errors = [];
-		if (name.length < 5) errors.push("Must provide a valid name.");
-		if (island.length < 2) errors.push("Island name must be at least 5 characters.");
+		if (name.length < 5) errors.push("Name must be at least 5 characters.");
+		if (name.length > 50) errors.push("Name must be within 50 characters.");
+		if (island.length < 3) errors.push("Island name must be at least 3 characters.");
+		if (island.length > 50) errors.push("Island name must be within 50 characters.");
         if (country.length < 3) errors.push("Country name must be at least 3 characters.");
-		if (description.length < 10)
-			errors.push("Description must be more than 10 characters.");
+		if (country.length > 50 ) errors.push("Country name must be within 50 characters.")
+		if (description.length < 10) errors.push("Description must be more than 10 characters.");
+		if (description.length > 500) errors.push("Description must not be more than 500 characters.");
 		if (price <= 10) errors.push("Price must be greater than 10.");
+		if (price >= 9000) errors.push("Price must be less than 9000.");
+		if (images.length > 10) errors.push('You can add maximum 10 images at a time.')
+
 
 		setValidationErrors(errors);
 	}, [
@@ -77,7 +83,8 @@ const EditResort = () => {
         country,
 		description,
 		price,
-		previousPk
+		previousPk,
+		images
 	]);
 
 	const onCancel = () => {
@@ -88,7 +95,7 @@ const EditResort = () => {
 		e.preventDefault();
 
 		setHasSubmitted(true);
-		const imageFiles = images.map((image) => image.file);
+		const imageFiles = images?.map((image) => image.file);
 		const data = {
 			name,
             island,
@@ -105,16 +112,18 @@ const EditResort = () => {
             fire_place,
             wifi,
             workspace,
-            water_sports 
+            water_sports,
+			images
 		};
 		
 		if (validationErrors.length <= 0) {
-			await dispatch(modifyResort(data, resortId));
-			await addImages(imageFiles, resortId)
+			await dispatch(modifyResort(data, resort.id));
+			await addImages(imageFiles, resort.id)
 			
-			history.push(`/resorts/${resortId}`)
+			history.push(`/resorts/${resort.id}`)
 			setValidationErrors([]);
 			setHasSubmitted(false);
+			await dispatch(getResorts());
 			}
 		};
 
@@ -122,7 +131,7 @@ const EditResort = () => {
 		e.preventDefault();
 		await dispatch(deleteImg(imageId))
 		await dispatch(getResort(resortId));
-		imageArr = resort.images;
+		imageArr = resort?.images;
 	}
 			
 

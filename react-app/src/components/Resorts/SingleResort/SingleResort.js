@@ -18,17 +18,22 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	const dispatch = useDispatch();
 	const { resortId } = useParams();
 	const [disable, setDisable] = useState(true);
-	const resort = useSelector((state) => state.resort.images ? state.resort : state?.resort[resortId]);
-	const user = useSelector((state) => state?.session.user);
+	const user = useSelector((state) => state.session.user);
+	const resort = useSelector((state) => state.resort?.images ? state.resort : state.resort[resortId]);
+
+	console.log(resort, "...............resort.....................")
+
 
 	const reviewsArr = resort?.reviews;
+
 	const imagesArr = resort?.images;
+
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
 			for (let i = 0; i < reviews?.length; i++) {
 				let review = reviews[i]
-				if (review.user_id === userId) {
+				if (review?.user_id === userId) {
 					return false;
 				}
 			}
@@ -62,8 +67,8 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					<div className="imagesResort">
 						<ImageSlider resort={resort}/>
 					</div>
-					
 				}
+
 				<div className="divisionSpace">
 					<div className="divisionLeft">
 						<h2>

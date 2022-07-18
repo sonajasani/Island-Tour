@@ -17,12 +17,12 @@ function ProfileRoutes() {
 
 
   const bookings = Object.values(useSelector(state => state.booking));
-  console.log(bookings, "..................bookings in booking................")
+  // console.log(bookings, "..................bookings in booking................")
 
 
   const myBookings = bookings?.filter(booking => booking.user_id == user.id)
   // const myBookings = bookings?.filter(booking => user.bookings?.includes(booking.id))
-  console.log(myBookings, "..................mybookings in booking................")
+  // console.log(myBookings, "..................mybookings in booking................")
 
 
 
