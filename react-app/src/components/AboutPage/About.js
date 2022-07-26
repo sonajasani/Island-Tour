@@ -11,6 +11,9 @@ const About = () =>{
                     <h1>About Me :</h1>
                     <h2>Hi, I'm Sona Jasani</h2>
                     <h3>I'm a passionate software engineer driven by the desire to create new, amazing experiences. Since creating my first application and seeing it in action, I was obsessed with creating solutions to solve problems and enhance users' experiences.</h3>
+                    <a href="https://sonajasani.github.io/">
+                        <h3 className="portfolio-site">Portfolio Site</h3>
+                    </a>
                     <div className='links'>
                         <a href='https://github.com/sonajasani' className='github-div'>
                             <i class="fa fa-github" aria-hidden="true"></i>

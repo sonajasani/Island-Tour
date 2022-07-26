@@ -19,9 +19,20 @@
     margin-right: 100px;
 }
 
+.portfolio-site{
+    color: rgb(22, 105, 230);
+    font-size: 25px;
+    text-decoration: 1px rgb(22, 105, 230) underline ;
+}
+
+
+.portfolio-site:hover{
+    font-size: 27px;
+}
+
 
 .links{
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .github-div{
