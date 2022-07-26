@@ -21,7 +21,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	const user = useSelector((state) => state.session.user);
 	const resort = useSelector((state) => state.resort?.images ? state.resort : state.resort[resortId]);
 
-	console.log(resort, "...............resort.....................")
+	
 
 
 	const reviewsArr = resort?.reviews;
@@ -41,9 +41,11 @@ const SingleResort = ({ setLoaded, loaded }) => {
 		return true;
 	};
 
-	const onClickEdit = () => {
-		history.push(`/resorts/${resortId}/edit`);
-	};
+
+
+	// const onClickEdit = () => {
+	// 	history.push(`/resorts/${resortId}/edit`);
+	// };
 
 	useEffect(() => {
 		setDisable(disableHandler(reviewsArr, user.id));
@@ -52,6 +54,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	if (!resort && loaded) {
 		return <PageNotFound />;
 	}
+	
 	return (
 		<div className="singleResortBody">
 			
