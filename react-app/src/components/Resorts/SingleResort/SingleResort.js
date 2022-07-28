@@ -54,7 +54,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	if (!resort && loaded) {
 		return <PageNotFound />;
 	}
-	
+
 	return (
 		<div className="singleResortBody">
 			
