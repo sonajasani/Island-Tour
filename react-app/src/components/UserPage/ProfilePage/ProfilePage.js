@@ -26,9 +26,9 @@ function ProfilePage({ user }) {
   return (
     <div className="profile-section">
       <div className='edit-delete-profile'>
-        {/* <NavLink  className='profile-edit' to='/profile/@me-edit'>
+        <NavLink  className='profile-edit' to='/profile/@me-edit'>
           <button className='profile-edit-btn'>Edit Profile Info</button>
-        </NavLink> */}
+        </NavLink>
       
         <div onClick={() => setToggleDelete(true)} className='profile-delete-btn'>Delete Account</div>
         { toggleDelete && 
