@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import BookingCard from '../BookingsPage/BookingCard';
+// import BookingCard from '../BookingsPage/BookingCard';
 import profilePicture from '../../../images/ProfilePic.png'
 import {NavLink, useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
