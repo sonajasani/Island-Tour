@@ -10,6 +10,17 @@ import PageNotFound from "../../PageNotFound";
 import { getResorts } from "../../../store/resorts";
 import ImageSlider from'../../Tools/ImageSlider'
 import comingSoon from '../../../images/comingSoon.jpg'
+import firePlace from '../../../images/firePlace.png'
+import gym from '../../../images/gym.png'
+import jacuzzi from '../../../images/jacuzzi.png'
+import massage from '../../../images/massage.png'
+import minibar from '../../../images/minibar.png'
+import roomService from '../../../images/roomService.png'
+import surfing from '../../../images/surfing.png'
+import wifi from '../../../images/wifi.png'
+import workspace from '../../../images/workspace.png'
+import swimmingPool from '../../../images/swimmingPool.png'
+
 
 import "./SingleResort.css";
 
