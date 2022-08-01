@@ -74,11 +74,6 @@
 	text-decoration: 1px solid green underline;
 }
 
-.resort-amenities>p{
-	color:green;
-	font-weight: 600;
-	font-size: 19px;
-}
 
 .divisionLeft>h2{
 	text-decoration: 1px solid green underline;
@@ -100,4 +95,18 @@
 	width: 70%;
 	margin-left: 15%;
 	margin-right: 15%;
+}
+
+/*****************************************************************/
+
+.amenities-img{
+	width: 25px;
+	height: 25px;
+}
+
+
+.amenities>span{
+	color:green;
+	font-weight: 600;
+	font-size: 19px;
 }

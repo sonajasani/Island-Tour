@@ -97,10 +97,16 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					<div className="resort-amenities">
 						<h2>Amenities</h2>
 						{(resort?.minibar) && 
-						<p>Minibar</p>
+						<div className="amenities">
+							<img src={minibar} alt="" className="amenities-img" ></img>
+							<span> Minibar</span>
+						</div>
 						}
 						{(resort?.gym) && 
-						<p>Fitness Center</p>
+						<div className="amenities">
+							<img src={gym} alt="" className="amenities-img" ></img>
+							<span> Fitness Center</span>
+						</div>
 						}
 						{(resort?.spa) && 
 						<p>Spa</p>
