@@ -109,28 +109,52 @@ const SingleResort = ({ setLoaded, loaded }) => {
 						</div>
 						}
 						{(resort?.spa) && 
-						<p>Spa</p>
+						<div className="amenities">
+							<img src={massage} alt="" className="amenities-img" ></img>
+							<span> Spa</span>
+						</div>
 						}
 						{(resort?.jacuzzi) && 
-						<p>Jacuzzi</p>
+						<div className="amenities">
+							<img src={jacuzzi} alt="" className="amenities-img" ></img>
+							<span> Jacuzzi</span>
+						</div>
 						}
 						{(resort?.pool) && 
-						<p>Swimming Pool</p>
+						<div className="amenities">
+							<img src={swimmingPool} alt="" className="amenities-img" ></img>
+							<span> Swimming Pool</span>
+						</div>
 						}
 						{(resort?.room_service) && 
-						<p>Room Service</p>
+						<div className="amenities">
+							<img src={roomService} alt="" className="amenities-img" ></img>
+							<span> Room Service</span>
+						</div>
 						}
 						{(resort?.fire_place) && 
-						<p>Fire Place</p>
+						<div className="amenities">
+							<img src={firePlace} alt="" className="amenities-img" ></img>
+							<span> Fire Place</span>
+						</div>
 						}
 						{(resort?.wifi) && 
-						<p>Wifi</p>
+						<div className="amenities">
+							<img src={wifi} alt="" className="amenities-img" ></img>
+							<span> Wifi</span>
+						</div>
 						}
 						{(resort?.workspace) && 
-						<p>Personal Workspace</p>
+						<div className="amenities">
+							<img src={workspace} alt="" className="amenities-img" ></img>
+							<span> Personal Workspace</span>
+						</div>
 						}
 						{(resort?.water_sports) && 
-						<p>Water Activities</p>
+						<div className="amenities">
+							<img src={surfing} alt="" className="amenities-img" ></img>
+							<span> Water Activities</span>
+						</div>
 						}
 					</div>
 				</div>

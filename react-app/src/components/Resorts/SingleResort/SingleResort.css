@@ -24,6 +24,7 @@
 
 .divisionSpace {
 	display: flex;
+	justify-content: center;
 	margin-top: 1em;
 	border-bottom:   0.5px solid rgb(212, 211, 211); 
 	padding-bottom: 35px;
@@ -31,6 +32,7 @@
 
 .divisionLeft {
 	margin-right: 3em;
+	width: 70%;
 }
 
 
@@ -108,5 +110,5 @@
 .amenities>span{
 	color:green;
 	font-weight: 600;
-	font-size: 19px;
+	font-size: 18px;
 }
