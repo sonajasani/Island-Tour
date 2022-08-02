@@ -54,10 +54,10 @@ function EditProfile() {
 
         if (errors.length <=0){
             const data = await dispatch(editSingleUser(userId, formData));
-			// console.log(data);
-			// if (data) {
-			// 	setErrors(data);
-			// }
+			console.log(data);
+			if (data) {
+				setErrors(data);
+			}
 		}
         
     }
@@ -120,9 +120,10 @@ function EditProfile() {
                         </input>
 
 
-                        <label htmlFor='for'>Bio</label>
+                        <label htmlFor='bio'>Bio</label>
                         <input
-                        disabled={user?.username == 'Demo'}
+                        // disabled={user?.username == 'Demo'}
+                        name='bio'
                         type='text'
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}

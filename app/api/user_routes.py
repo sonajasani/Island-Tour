@@ -42,7 +42,7 @@ def update_user(user_id):
     if user.id == int(user_id):
         form = EditUserForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data, "............form..................")
+
         
         if form.validate_on_submit():
             # TODO AWS S3 Bucket Upload Start - profile_image_url

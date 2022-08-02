@@ -32,11 +32,12 @@ def username_exists(form, field):
     #     raise ValidationError('Username is already in use.')
 
 
+
+
 class EditUserForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
-    first_name= StringField('first_name')
-    last_name= StringField('last_name')
+    first_name = StringField('first_name')
+    last_name = StringField('last_name')
     bio = StringField('bio')
     photo = FileField('photo', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif', 'img', 'tiff'])])
-    # password = StringField('password', validators=[DataRequired()])
