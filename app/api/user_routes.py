@@ -40,34 +40,32 @@ def update_user(user_id):
     url = None
     
     if user.id == int(user_id):
-        try:
-            form = EditUserForm()
-            print(form, "..........form............")
-            form['csrf_token'].data = request.cookies['csrf_token']
-            
-            if form.validate_on_submit():
-                # TODO AWS S3 Bucket Upload Start - profile_image_url
-                if request.files:
-                    image = request.files["photo"]
-                    if not allowed_file(image.filename):
-                        return {"errors": "file type not permitted"}, 400
-                    image.filename = get_unique_filename(image.filename)
-                    upload = upload_file_to_s3(image)
-                    if "url" not in upload:
-                            return upload, 400
-                    url = upload["url"]
-                # TODO AWS S3 Bucket Upload End - profile_image_url
+        form = EditUserForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        print(form.data, "............form..................")
+        
+        if form.validate_on_submit():
+            # TODO AWS S3 Bucket Upload Start - profile_image_url
+            if request.files:
+                image = request.files["photo"]
+                if not allowed_file(image.filename):
+                    return {"errors": "file type not permitted"}, 400
+                image.filename = get_unique_filename(image.filename)
+                upload = upload_file_to_s3(image)
+                if "url" not in upload:
+                        return upload, 400
+                url = upload["url"]
+            # TODO AWS S3 Bucket Upload End - profile_image_url
 
-                user.username = form.data['username']
-                user.email = form.data['email']
-                user.bio = form.data['bio']
-                user.first_name = form.data['first_name']
-                user.last_name= form.data['last_name']
-                user.photo = None if url is None else url
-                db.session.commit()
-                return user.to_dict(), 201
-        except:
-            print("errors,.......................")
+            user.username = form.data['username']
+            user.email = form.data['email']
+            user.bio = form.data['bio']
+            user.first_name = form.data['first_name']
+            user.last_name= form.data['last_name']
+            user.photo = None if url is None else url
+            db.session.commit()
+            return user.to_dict(), 201
+    
 
     print(form.errors, "..............form error.................")
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

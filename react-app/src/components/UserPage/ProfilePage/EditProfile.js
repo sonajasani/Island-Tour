@@ -54,10 +54,10 @@ function EditProfile() {
 
         if (errors.length <=0){
             const data = await dispatch(editSingleUser(userId, formData));
-			console.log(data);
-			if (data) {
-				setErrors(data);
-			}
+			// console.log(data);
+			// if (data) {
+			// 	setErrors(data);
+			// }
 		}
         
     }
