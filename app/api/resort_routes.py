@@ -51,6 +51,8 @@ def new_resort():
             island=data['island'],
             country=data['country'],
             continent=data['continent'],
+            lat=form.data['lat'],
+            lng=form.data['lng'],
             description=data['description'],
             price=data['price'],
             minibar=data['minibar'],
@@ -90,6 +92,8 @@ def update_resort(id):
         resort.island=data['island']
         resort.country=data['country']
         resort.continent=data['continent']
+        resort.lat=data['lat']
+        resort.lng=data['lng']
         resort.description=data['description']
         resort.price=data['price']
         resort.minibar=data['minibar']
