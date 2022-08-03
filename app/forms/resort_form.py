@@ -25,6 +25,12 @@ def resort_check(form, field):
   if resort:
     raise ValidationError('This listing already exsits.')
 
+
+def check_lat_lng(form, field):
+    coordinate = field.data
+    if coordinate == 0:
+        raise ValidationError('Address not found.')
+
 ###########################################################################################
 
 
@@ -33,6 +39,8 @@ class ResortForm(FlaskForm):
     island = StringField('island', validators=[DataRequired()])
     country = StringField('country', validators=[DataRequired()])
     continent = SelectField('continent', validators=[DataRequired()], choices=continent)
+    lat = DecimalField('lat', validators=[check_lat_lng])
+    lng = DecimalField('lng', validators=[check_lat_lng])
     description = StringField('description', validators=[DataRequired()])
     # user_id = IntegerField('user_id', validators=[DataRequired()])
     price = IntegerField('price', validators=[DataRequired(), validate_price])
