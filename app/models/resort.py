@@ -10,6 +10,8 @@ class Resort(db.Model):
   island = db.Column(db.String(50), nullable=False)
   country = db.Column(db.String(50), nullable=False)
   continent = db.Column(db.String(20), nullable=False)
+  lat = db.Column(db.Float, nullable=False)
+  lng = db.Column(db.Float, nullable=False)
   description = db.Column(db.String(500), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   price = db.Column(db.Integer, nullable=False)
@@ -43,6 +45,8 @@ class Resort(db.Model):
       'island': self.island,
       'country': self.country,
       'continent': self.continent,
+      'lat': self.lat,
+      'lng': self.lng,
       'description': self.description,
       'user_id': self.user_id,
       'price': self.price,
