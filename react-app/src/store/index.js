@@ -5,6 +5,7 @@ import review from './reviews'
 import resort from './resorts';
 import booking from './bookings';
 import image from './images';
+import map from './maps';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   resort,
   booking,
   image,
+  map,
 });
 
 

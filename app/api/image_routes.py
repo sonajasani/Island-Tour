@@ -88,11 +88,11 @@ def update_image():
 def delete_image(image_id):
 
     image = Image.query.get(image_id)
-    print(image, ".................image................")
-    print(image_id,"...............imageid...............")
+    # print(image, ".................image................")
+    # print(image_id,"...............imageid...............")
     if not image:
         return {"error": "Not Found"}, 404
-    # if image.property.owner.id != current_user.id:
+    # if image.resort.owner.id != current_user.id:
     #     return {"error": "Forbidden"}, 403
 
     # if image.url.startswith(s3.BASE_PATH):

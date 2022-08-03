@@ -10,7 +10,7 @@ def review_check(field):
     review = Review.query.filter(Review.user_id == currentUserId).first()
     if review:
       raise ValidationError(
-          'You have already submitted a review for this property.')
+          'You have already submitted a review for this Resort.')
 
 class ReviewForm(FlaskForm):
   rating = DecimalField("Rating", validators=[DataRequired(),  NumberRange(min=1, max=5, message="Rating must be between 1 to 5.")])
