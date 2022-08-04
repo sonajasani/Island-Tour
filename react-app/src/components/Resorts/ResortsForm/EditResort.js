@@ -96,6 +96,16 @@ const EditResort = () => {
 
 		setHasSubmitted(true);
 		const imageFiles = images?.map((image) => image.file);
+
+		const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${name} ${island} ${country}&key=AIzaSyCelPb9DnTO3Wv691TP3f2H54FgP1y4m34&language=en&pretty=1&abbrv=1&limit=1`)
+        const res = await longLat.json()
+        let lat = 0
+        let lng = 0
+        if (res.results && res.results[0] && res.results[0].geometry){
+            lat = res.results[0].geometry.lat
+            lng = res.results[0].geometry.lng
+        }
+
 		const data = {
 			name,
             island,
