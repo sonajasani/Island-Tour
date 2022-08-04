@@ -166,14 +166,15 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					</div>
 				</div>
 			</div>
-			<div>
+			
+			<div className="review-map-section">
 				<div className="main-review-div">
 					<GetReviews />
 					{disable && <ReviewForm />}
 				</div>
-				<div>
-					<h3>Location:</h3>
-					<div>
+				<div className="main-map-div">
+					<h2>Location:</h2>
+					<div id="map-sub-div">
 						<Maps resort={resort} apiKey={key} />
 					</div>
 				</div>

@@ -40,7 +40,7 @@ const Maps = ({ apiKey, resort }) => {
                     >
                         {(selectedMarker && resort?.id) ? (
                             <InfoWindow>
-                                <div id='single-resort-map-marker-display'>
+                                <div id='map-pointer-display'>
                                     <p>{resort?.name}</p>
                                     <p>{formatter.format(resort?.price)} per night</p>
                                 </div>
