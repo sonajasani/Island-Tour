@@ -126,19 +126,20 @@
 .main-map-div{
 	width: 55%;
 	margin-top: 20px;
-	margin-left: 5%;
-	display: flex;
+	margin-left: 10%;
+	position: relative;
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: center; */
 }
 
 
-#map-sub-div{
-    display: flex;
+.map-sub-div{
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 400px;
+    justify-content: center; */
+    height: 425px;
 }
 
 #map-pointer-display {

@@ -174,7 +174,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 				</div>
 				<div className="main-map-div">
 					<h2>Location:</h2>
-					<div id="map-sub-div">
+					<div className="map-sub-div">
 						<Maps resort={resort} apiKey={key} />
 					</div>
 				</div>
