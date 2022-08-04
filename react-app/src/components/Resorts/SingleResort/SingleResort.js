@@ -33,7 +33,13 @@ const SingleResort = ({ setLoaded, loaded }) => {
 	const user = useSelector((state) => state.session.user);
 	const resort = useSelector((state) => state.resort?.images ? state.resort : state.resort[resortId]);
 
-	
+
+	const key = useSelector((state) => state.map.key);
+	console.log("...................",key,"..................")
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
 
 	const reviewsArr = resort?.reviews;
@@ -160,9 +166,17 @@ const SingleResort = ({ setLoaded, loaded }) => {
 					</div>
 				</div>
 			</div>
-			<div className="main-review-div">
-				<GetReviews />
-				{disable && <ReviewForm />}
+			<div>
+				<div className="main-review-div">
+					<GetReviews />
+					{disable && <ReviewForm />}
+				</div>
+				<div>
+					<h3>Location:</h3>
+					<div>
+						<Maps resort={resort} apiKey={key} />
+					</div>
+				</div>
 			</div>
 		</div>
 	);
