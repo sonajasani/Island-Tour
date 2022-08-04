@@ -20,7 +20,7 @@ import surfing from '../../../images/surfing.png'
 import wifi from '../../../images/wifi.png'
 import workspace from '../../../images/workspace.png'
 import swimmingPool from '../../../images/swimmingPool.png'
-import Maps from '../../map/maps';
+import Maps from '../../map/map';
 
 
 import "./SingleResort.css";
