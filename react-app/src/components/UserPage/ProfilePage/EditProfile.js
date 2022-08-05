@@ -22,7 +22,7 @@ function EditProfile() {
     const [first_name, setFName] = useState(user?.first_name);
     const [last_name, setLName] = useState(user?.last_name);
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
     
     
     useEffect(() => {
@@ -38,10 +38,10 @@ function EditProfile() {
 
     }, [username, email, first_name, last_name, bio])
     
-    const submitForm = async (e) => {
+    const submitForm = async(e) => {
         e.preventDefault();
-        
-        setHasSubmitted(true);
+        const errors = [];
+        // setHasSubmitted(true);
 
         const formData = {
             username, 
@@ -52,13 +52,13 @@ function EditProfile() {
             photo  
         }
 
-        if (errors.length <=0){
-            const data = await dispatch(editSingleUser(userId, formData));
-			console.log(data);
-			if (data) {
-				setErrors(data);
-			}
-		}
+        const data = await dispatch(editSingleUser(userId, formData));
+        console.log(data, "...........data edit form....................")
+        console.log(data);
+        if (data) {
+            setErrors(data);
+        }
+		
         
     }
 

@@ -11,11 +11,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    first_name = db.Column(db.String(20))
-    last_name = db.Column(db.String(20))
+    first_name = db.Column(db.String(20), nullable=True)
+    last_name = db.Column(db.String(20), nullable=True)
     host = db.Column(db.Boolean, nullable=False, default=False)
-    bio = db.Column(db.String(1000))
-    photo = db.Column(db.String(255))
+    bio = db.Column(db.String(1000), nullable=True)
+    photo = db.Column(db.String(255), nullable=True)
 
     # Relationships
     resorts = db.relationship("Resort", back_populates="users", cascade="all, delete" )
