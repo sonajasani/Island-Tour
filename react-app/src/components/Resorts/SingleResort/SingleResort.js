@@ -184,3 +184,6 @@ const SingleResort = ({ setLoaded, loaded }) => {
 }
 
 export default SingleResort;
+
+
+/**/
