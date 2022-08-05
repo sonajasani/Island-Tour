@@ -128,11 +128,12 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 export const editSingleUser = (userId, data) => async dispatch => {
 	console.log(data, "............data..................")
+	
 	const res = await fetch(`/api/users/edit/${userId}`, {
 	  method: 'PUT',
-	  headers: {
-				"Content-Type": "application/json",
-				},
+	//   headers: {
+	// 			"Content-Type": "application/json",
+	// 			},
 	  body: data
 	});
 	console.log(res, "..............res.............")
