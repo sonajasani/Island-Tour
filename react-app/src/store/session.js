@@ -127,7 +127,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 // }
 
 export const editSingleUser = (userId, data) => async dispatch => {
-	console.log(data, "............data..................")
+	
 	
 	const res = await fetch(`/api/users/edit/${userId}`, {
 	  method: 'PUT',
@@ -136,7 +136,7 @@ export const editSingleUser = (userId, data) => async dispatch => {
 	// 			},
 	  body: data
 	});
-	console.log(res, "..............res.............")
+	
 	if (res.ok) {
 	  const user = await res.json();
 	  dispatch(editUser(user));
