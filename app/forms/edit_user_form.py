@@ -10,7 +10,8 @@ from flask_wtf.file import FileAllowed
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
-    user = User.query.filter(User.email == email).first()
+    user = User.query.filter(User.email == email)
+    # user = User.query.filter(User.email == email).first()
     if (user == current_user) or (not user):
         pass
     else:
@@ -23,7 +24,8 @@ def user_exists(form, field):
 def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
-    user = User.query.filter(User.username == username).first()
+    user = User.query.filter(User.username == username)
+    # user = User.query.filter(User.username == username).first()
     if (user == current_user) or (not user):
         pass
     else:
