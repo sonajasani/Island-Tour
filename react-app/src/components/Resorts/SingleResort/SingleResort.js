@@ -35,7 +35,6 @@ const SingleResort = ({ setLoaded, loaded }) => {
 
 
 	const key = useSelector((state) => state.map.key);
-	console.log("...................",key,"..................")
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -59,11 +58,6 @@ const SingleResort = ({ setLoaded, loaded }) => {
 		return true;
 	};
 
-
-
-	// const onClickEdit = () => {
-	// 	history.push(`/resorts/${resortId}/edit`);
-	// };
 
 	useEffect(() => {
 		setDisable(disableHandler(reviewsArr, user.id));
