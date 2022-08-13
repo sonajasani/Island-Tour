@@ -39,7 +39,7 @@ function AllResorts() {
     return (
         <>
             <div className='all-resort-div'>
-                <h1>Famous Island Resorts Around The World !</h1>
+                <h1>Famous Island Resorts Around The World..!</h1>
                 <div>
                     <NavLink to='resorts/new' className='upload-resort-btn'>
                         <button>
