@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 import Calendar from "../../UserPage/BookingsPage/Calendar";
 import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
-import DeleteResort from "./DeleteResort";
+// import DeleteResort from "./DeleteResort";
 import PageNotFound from "../../PageNotFound";
-import { getResorts } from "../../../store/resorts";
+// import { getResorts } from "../../../store/resorts";
 import ImageSlider from'../../Tools/ImageSlider'
 import comingSoon from '../../../images/comingSoon.jpg'
 import firePlace from '../../../images/firePlace.png'
@@ -43,8 +43,7 @@ const SingleResort = ({ setLoaded, loaded }) => {
 
 	const reviewsArr = resort?.reviews;
 
-	const imagesArr = resort?.images;
-
+	// const imagesArr = resort?.images;
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
@@ -57,7 +56,6 @@ const SingleResort = ({ setLoaded, loaded }) => {
 		}
 		return true;
 	};
-
 
 	useEffect(() => {
 		setDisable(disableHandler(reviewsArr, user.id));
@@ -178,6 +176,3 @@ const SingleResort = ({ setLoaded, loaded }) => {
 }
 
 export default SingleResort;
-
-
-/**/
