@@ -14,14 +14,14 @@ const About = () =>{
                     <a href="https://sonajasani.github.io/">
                         <h3 className="portfolio-site">Portfolio Site</h3>
                     </a>
-                    <div className='links'>
+                    {/* <div className='links'>
                         <a href='https://github.com/sonajasani' className='github-div'>
                             <i class="fa fa-github" aria-hidden="true"></i>
                         </a>
                         <a href='https://www.linkedin.com/in/sona-jasani-3b3540194/' className='linkedin-div'>
                             <i class="fa fa-linkedin" aria-hidden="true"></i>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
                 <div classname='img-div'>
                     <img src={developerpic2} alt="" className='developer-pic-div'></img>
