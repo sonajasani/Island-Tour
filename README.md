@@ -38,7 +38,7 @@
 </details>
 
 
-## About The Project
+## About 
 
 
 [Click here to view Island Tour live!](https://island-tour.herokuapp.com/)
